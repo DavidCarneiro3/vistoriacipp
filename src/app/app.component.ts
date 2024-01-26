@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/';
 import { StatusBar } from '@ionic-native/status-bar/';
 import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
+import { TabsPage } from '../pages/tabs/tabs';
 
 
 @Component({
@@ -30,16 +31,19 @@ export class MyApp {
           this.statusBar.styleDefault();
           this.splashScreen.hide();
 
-          // this.storage.get('token')
-          // .then((val) => {
-          //     this.token = val
-               this.storage.clear()
-          //     console.log('Home Token in Components',this.token)
-          //     if(this.token != null){
-          //       this.rootPage = LoginPage
-          //     }
+          this.storage.get('token')
+          .then((val) => {
+              this.token = val
+              // this.storage.clear()
+              console.log('Home Token in Components',this.token)
+              if(this.token != null){
+                this.rootPage = HomePage
+              }else{
+                this.storage.clear();
+                this.rootPage= LoginPage
+              }
             
-          // })
+          })
         });
       }
 

@@ -1,83 +1,78 @@
-
-import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AlertController, IonicPage, LoadingController, NavController, NavParams } from 'ionic-angular';
 import { DataserviceProvider } from '../../providers/dataservice/dataservice';
 import { Storage } from '@ionic/storage';
-import { LoadingController } from 'ionic-angular';
+import { InspectPage } from '../inspect/inspect';
 import { DatePipe } from '@angular/common';
-import { RequestDetailPage } from '../request-detail/request-detail';
-import { SchedulePage } from '../schedule/schedule';
 
-
-
+@IonicPage()
 @Component({
   selector: 'page-list-request',
   templateUrl: 'list-request.html',
 })
 export class ListRequestPage {
-
-  dt_ini: string
-  dt_fin: string
+  listRequest: any
+  token: any;
+  lisSchedules: any
+  user: any;
+  name: string
+  result: any;
   list: any;
-  token: string;
-  disabledPayment: boolean = false;
-  disabledCancel: boolean = false;
-  constructor(private dataservice: DataserviceProvider, 
-    private storage: Storage, 
-    // private route: Router,
-    private alert: AlertController,
+  request = {unit: '', service: '', status: '', dt_ini: '', dt_fin: '', person: '', cod_user: ''}
+  today = null
+  time = Math.round((new Date()).getTime() / 1000);
+  constructor(private storage: Storage, 
+    private dataservice: DataserviceProvider,
     public loading: LoadingController,
-    public navCtrl: NavController ) {
-
-}
+    public alert: AlertController,
+    public navParams: NavParams,
+    public navCtrl: NavController) {
+    // this.listRequest = this.navParams.get('request')
+    console.log('Dados da Consulta',this.listRequest)
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListRequestPage');
     this.storage.get('token')
     .then((val) => {
         this.token = val
-        console.log('Request Detail Token',this.token)
+        console.log('Request Inspect Token',this.token)
+        
     })
   }
-
-  getListRequests(dt_ini,dt_fin){
+  
+  getRequest() {
     const loader = this.loading.create({
       content: "Carregando..."
     });
     loader.present();
     const datepipe: DatePipe = new DatePipe('en-US')
-    let dataini = datepipe.transform(dt_ini, 'dd/MM/yyyy')
-    let datafin = datepipe.transform(dt_fin, 'dd/MM/yyyy')
-    this.dataservice.listRequests(this.token,dataini,datafin)
+    let dataini = datepipe.transform(this.listRequest.dt_ini, 'dd/MM/yyyy')
+    let datafin = datepipe.transform(this.listRequest.dt_fin, 'dd/MM/yyyy')
+    this.dataservice.listSchedules(this.token, dataini, datafin)
     .then(data => {
       let parse: any = data
-    
-      console.log('Lista de solicitações',parse)
-      this.list = parse.RDATA
-      loader.dismiss()
+      console.log('Agendamentos',parse.RDATA)
+      this.lisSchedules = parse.RDATA
+      loader.dismiss();
     })
   }
 
-  goPayment(cod_sol){
-    this.navCtrl.push(RequestDetailPage,{cod: cod_sol})
+  opemInspect(cod_sol){
+    this.navCtrl.push(InspectPage,{cod: cod_sol})
   }
 
-  goSchedule(cod_sol){
-    this.navCtrl.push(SchedulePage,{cod: cod_sol})
+  send(request){
+    this.listRequest = request
+    this.getRequest()
   }
 
-  cancelSol(cod_sol){
-    const loader = this.loading.create({
-      content: "Carregando..."
-    });
-    loader.present();
-    this.dataservice.cancelSolicitacao(cod_sol, this.token)
-    .then(data => {
-      let parse: any = data
-      console.log('Res Cancel',parse)
-      this.getListRequests(this.dt_ini,this.dt_fin)
-      loader.dismiss()
-    })
+  clear(){
+    this.request.dt_fin = '';
+    this.request.dt_ini = '';
+    this.request.service= '';
+    this.request.status = '';
+    this.request.unit   = '';
   }
 
 }

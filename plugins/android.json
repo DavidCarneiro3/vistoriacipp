@@ -16,23 +16,11 @@
     "cordova-plugin-android-permissions": {
       "PACKAGE_NAME": "br.com.agendamentovivas"
     },
-    "cordova-plugin-device": {
-      "PACKAGE_NAME": "br.com.agendamentovivas"
-    },
-    "cordova-plugin-document-viewer": {
-      "PACKAGE_NAME": "br.com.agendamentovivas"
-    },
-    "cordova-plugin-file": {
-      "PACKAGE_NAME": "br.com.agendamentovivas"
-    },
-    "cordova-plugin-file-opener2": {
+    "cordova-plugin-camera": {
       "ANDROID_SUPPORT_V4_VERSION": "27.+",
       "PACKAGE_NAME": "br.com.agendamentovivas"
     },
-    "cordova-plugin-file-transfer": {
-      "PACKAGE_NAME": "br.com.agendamentovivas"
-    },
-    "cordova-plugin-inappbrowser": {
+    "cordova-plugin-device": {
       "PACKAGE_NAME": "br.com.agendamentovivas"
     },
     "cordova-plugin-ionic-keyboard": {
@@ -55,6 +43,9 @@
     }
   },
   "dependent_plugins": {
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "br.com.agendamentovivas"
+    },
     "phonegap-plugin-multidex": {
       "PACKAGE_NAME": "br.com.agendamentovivas"
     }

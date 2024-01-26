@@ -1,105 +1,79 @@
 page-list-request {
-  ::-webkit-scrollbar,
-  *::-webkit-scrollbar {
-    display: none;
-  }
-$break-small: 420px;
-$break-large: 1024px;
 
-@mixin respond-to($media){
-  @if $media == handhelds{
-    @media only screen and (max-width: $break-small){@content;}
-  }
-  @else if $media == medium-screens{
-    @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1){@content}
-  }
-  @else if $media == wide-screen{
-    @media only screen and (min-width: $break-large){@content}
-  }
-}
-
-.content{
-  @include respond-to(handhelds){
-      width: 100%;
-    }
-    @include respond-to(medium-screen){
-      width: 50%;
-    }
-    @include respond-to(wide-screen){
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%,-50%);
-      width: 50%;
-    }
-
-    @mixin center{
-      margin-left: auto;
-      margin-right: auto;
-      display: block;
-      text-align: center;
-    }
     
-}
- 
-  
-  .scroll-content{
-    //background-color: #0615bb;
-    //overflow: hidden;
-  }
-      ion-input{
+    ion-input{
         //background-color: #5f5f5e;
         border-radius: 5px;
         margin: 5px;
-        color: #0505bc;
+        color: #FFD400;
         padding: 2px;
       }
       ion-label{
-          margin-top: 5%;
-          margin:15px;
-          color: #0615bb;
+        -webkit-flex: none!important; 
+        flex: none!important; 
+        font-size: 16px;
+        margin-left: 8px!important;
+        color: #ccc;
       }
-   
+
+      .card-top{
+        text-align: center;
+        .header-card-top{
+          background-color: #FFD400;
+          text-align: center;
+          .header-card-title-top{
+            font-size: 1.2em;
+            color: #fff;
+          }
+        }
+        
+      }
+
+      .card-content{
+        padding: 5%;
+        border-radius: 10px;
+      }
+
+      .title-pri{
+        font-size: 18px;
+        background-color: #FFD400;
+        color: #fff;
+        text-align: center;
+      }
+      
       .item-info{
-        //background-color: #0505bc;
+        //background-color: #5f5f5e;
         position: relative;
         top: 0px;
         left: 7px;
         width: 100%;
         float: right;
-        font-size: 11px;
-        color: #0615bb;
-        padding: 2px;
+        font-size: 14px;
+        color: #ccc;
+        
         p{
-          margin: 2px;
+          margin: 1px;
         }
         .price-text{
           margin-left: 6px;
         }
         .text{
+          font-size: 1em;
           color: #000;
         }
       }
     
       .title{
-        color: #0615bb;
+        font-size: 1.3em;
+        color: #FFD400;
         font-weight: bold;
     }
-
+    .disbled{
+      display: block;
+    }
     .btn-control{
-      margin-left: 1%;
+      margin-left: -2%;
       margin-bottom: 0%;
-      color: #0505bc;
-    }
-
-    .btn-control:disabled{
-      margin-left: 1%;
-      margin-bottom: 0%;
-      color: #0615bb;
-    }
-    .btn-cons{
-      margin-left: 1%;
-      margin-bottom: 0%;
-      color: #0505bc;
+      color: #FFD400;
     }
 }

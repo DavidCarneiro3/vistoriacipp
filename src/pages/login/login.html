@@ -1,8 +1,10 @@
-<ion-content  class="no-scroll">
+<ion-content class="background">
   <form #form="ngForm">
-    <img class="img" src="assets/imgs/logo-vivas.jpeg" alt="">
+    <img class="img" src="assets/imgs/logo-noback-cipetran.png" alt="">
     <ion-card class="card">
-    
+      <ion-card-header>
+        <ion-card-title class="title">Acessar o App</ion-card-title>
+      </ion-card-header>
       <ion-card-content>
         <ion-item>
           <ion-input name="user" type="text" placeholder="Usuário" ngModel required></ion-input>
@@ -11,14 +13,11 @@
           <ion-input name="password" type="password" placeholder="Senha" ngModel required></ion-input>
         </ion-item>
         <div padding>
-          <button ion-button (click)="login(form)" size="large" class="btn" block [disabled]="form.invalid" color="primary">Entrar</button>
+          <button ion-button (click)="login(form)" size="large" class="btn" block [disabled]="form.invalid" color="dark">Entrar</button>
         </div>
-        <div padding>
-          <button ion-button (click)="goSignup()" block class="btn-reg" color="secondary">CADASTRE-SE</button>
-        </div>
-        <div >
-          <button ion-button (click)="recoveryPass()" class="recovery" clear size="small" color="primary">Esqueci minha senha</button>
-        </div>
+        <!-- <div padding>
+          <button ion-button (click)="goHome()" clear size="large" block color="secondary">Entrar Sem Login</button>
+        </div> -->
       </ion-card-content>
     </ion-card>
   </form>

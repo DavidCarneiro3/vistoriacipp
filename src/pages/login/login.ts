@@ -1,19 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, AlertController, LoadingController, NavController, Platform, ToastController } from 'ionic-angular';
+import { IonicPage, AlertController, LoadingController, NavController, Platform, ToastController, Tabs } from 'ionic-angular';
 import { DataserviceProvider } from '../../providers/dataservice/dataservice';
 import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
-import { SignupPage } from '../signup/signup';
-import { ForgetPasswordPage } from '../forget-password/forget-password';
-
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { TabsPage } from '../tabs/tabs';
 
 
+
+@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
@@ -46,13 +40,15 @@ export class LoginPage {
       this.dataservice.login(form.value.user,form.value.password)
       .then(data => {
         let parse = data
+        console.log('Data', parse)
         if(parse['RESULT'] == 'SUCESS'){
           this.storage.clear();
+          console.log('TOKEN', parse['TOKEN'])
           console.log('RDATA',parse['RDATA'])
           console.log('Result',parse['RESULT'])
           console.log('Token',parse['TOKEN'])
           this.storage.set('token',parse['TOKEN'])
-          this.navCtrl.setRoot(HomePage)
+          this.navCtrl.setRoot(HomePage, {token: parse['TOKEN']})
         }else{
           this.presentAlert('Erro!', parse['MSG_ERRO'])
         }
@@ -83,12 +79,9 @@ export class LoginPage {
     toast.present();
   }
 
-  recoveryPass(){
-    this.navCtrl.setRoot(ForgetPasswordPage);
+  goHome(){
+    this.navCtrl.setRoot(HomePage);
   }
 
-  goSignup(){
-    this.navCtrl.push(SignupPage);
-  }
 
 }
