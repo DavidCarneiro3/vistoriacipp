@@ -1,0 +1,36 @@
+page-login {
+
+    .img{
+        margin-top: 15%;
+        width: 40%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+   
+    .card{
+        background-color: #FFD400;
+        .title{
+            color: #fff;
+        }
+        ion-item{
+            color: #000;
+        }
+        
+    }
+    .info{
+        font-size: 28px;
+        font-family: Helvetica, sans-serif;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 30%;
+        color: #FFD400;
+    }
+
+    
+    
+    .btn{
+        background-color: #000;
+        color: #fff;
+    }
+}

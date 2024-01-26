@@ -1,0 +1,49 @@
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title><span class="text">Olá {{name || 'visitante'}} </span></ion-title>
+    <ion-buttons end>
+      <button ion-button clear color="white" (click)="clear()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" padding class="background">
+  <!-- <section text-center margin-bottom class="section">
+    <p class="text-sec">Bem vindo ao sistema de agendamento de serviços do GRUPO VIVAS</p>
+    </section> -->
+
+    <ion-card>
+      <ion-card-header class="title-pri">
+        <ion-card-title class="title">INFORME O NÚMERO DA OS</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+      <ion-item class="item">
+        <!-- <ion-label floating>Ordem de Serviço</ion-label> -->
+        <ion-input type="text" [(ngModel)]="ordemServico"></ion-input>
+      </ion-item>
+        </ion-list> 
+      </ion-card>
+    <!-- <ion-card *ngFor="let item of list">
+      <div class="item-info">
+        <p><b class="title">Solicitante: </b><span class="text">{{item.usu_nome}}</span></p>
+        <p><b class="title">Cod. Solicitação: </b><span class="text">{{item.cod_solicitacao}}</span></p>
+        <p><b class="title">Local: </b><span class="text">{{item.nome_unidade}}</span></p>
+        <p><b class="title">Serviço: </b><span class="text">{{item.servico}}</span></p>
+        <p><b class="title">Valor: </b><span class="text">{{item.vr_servico}}</span></p>
+        <p><b class="title">Status: </b><span class="text">{{item.status_solicitacao}}</span></p>
+        <p class="buttons">
+          <button ion-button full class="btn-control"  *ngIf="item.status_solicitacao != 'AGENDADO'" disabled color="secondary">Iniciar Vistoria</button>
+          <button ion-button full class="btn-control" (click)="opemInspect(item.cod_solicitacao)" *ngIf="item.status_solicitacao == 'AGENDADO'" color="secondary">Iniciar Vistoria</button>
+        </p>
+      </div>
+    </ion-card> -->
+        
+</ion-content>
+<ion-footer class="footer">
+  
+  <button ion-button size="large" block color="secondary" class="btn-comprar" (click)="send(ordemServico)">CONSULTAR
+  </button>
+
+</ion-footer>
