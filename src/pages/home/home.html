@@ -1,0 +1,45 @@
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title><span class="text">Olá {{name || 'visitante'}} </span></ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding class="background">
+  
+
+    
+      
+        
+          <div class="box" (click)="openRequests()">
+            <ion-icon name="ios-add-circle-outline" class="icon"></ion-icon>
+            <p class="title">Nova Solicitação</p>
+          </div>
+        
+        
+          <div class="box" (click)="openListRequests()">
+            <ion-icon name="ios-search-outline" class="icon"></ion-icon>
+            <p class="title">Consultar Solicitações</p>
+          </div>
+        
+     
+      
+          
+            <div class="box" (click)="openScheduling()">
+              <ion-icon name="ios-calendar-outline" class="icon"></ion-icon>
+              <p class="title">Consultar Agendamento</p> 
+            </div>
+          
+
+          
+            <div class="box" (click)="openProfile()">
+              <ion-icon name="ios-person-outline" class="icon"></ion-icon>
+              <p class="title">Meus Dados</p> 
+            </div>
+
+            <!-- <div class="box" (click)="getBoleto()">
+              <ion-icon name="ios-person-outline" class="icon"></ion-icon>
+              <p class="title">Testar PDF</p> 
+            </div> -->
+
+    
+</ion-content>

@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar color="primary">
+    
+    <ion-title>Meus Dados</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only class="out" color="white" (click)="logOut()">
+        <ion-icon name="md-log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="background">
+  
+    <ion-item class="item">
+      <ion-label position="stacked" class="text">Tipo Pessoa*</ion-label>
+      <ion-select placeholder="Selecione" name="prof"  [(ngModel)]="user.prof">
+        <ion-option value="PF">PF - Pessoa Física</ion-option>
+        <ion-option value="PJ">PJ - Pessoa Jurídica</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item class="item">
+      <ion-label position="stacked" class="text">CPF/CNPJ*</ion-label>
+      <ion-input type="text" placeholder="CPF/CNPJ" [brmasker]="{person: true}" [(ngModel)]="user.cpf" required></ion-input>
+    </ion-item>
+    <ion-item class="item">
+      <ion-label position="stacked" class="text">Nome*</ion-label>
+      <ion-input  type="text" placeholder="Nome" [(ngModel)]="user.name" required></ion-input>
+    </ion-item>
+    <ion-item class="item">
+      <ion-label position="stacked" class="text">Telefone*</ion-label>
+      <ion-input type="text" placeholder="Telefone" [brmasker]="{mask:'(00)00000-0000', len:14}" [(ngModel)]="user.phone" required></ion-input>
+    </ion-item>
+    <ion-item class="item">
+      <ion-label position="stacked" class="text">Email*</ion-label>
+      <ion-input  type="text" placeholder="Email" [(ngModel)]="user.email" required></ion-input>
+    </ion-item>
+    <div padding>
+      <button ion-button size="large" class="btn-save" block (click)="updateUser(user)" color="secondary">Salvar</button>
+    </div>
+  
+
+</ion-content>

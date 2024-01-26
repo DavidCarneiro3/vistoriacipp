@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <!-- <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons> -->
+    <ion-title>Minhas Solicitações</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  
+    <ion-label>Data Inicial</ion-label>
+    <ion-item class="item">
+     
+      <ion-datetime name="dt_ini" maxlength="10" placeholder="Data Inicial" [(ngModel)]="dt_ini" required></ion-datetime>
+    </ion-item>
+    <ion-label>Data Final</ion-label>
+    <ion-item class="item">
+      
+      <ion-datetime name="dt_fin" maxlength="10" placeholder="Data Final" [(ngModel)]="dt_fin" required></ion-datetime>
+    </ion-item>
+    <div padding>
+      <button ion-button large class="btn-cons" block (click)="getListRequests(dt_ini,dt_fin)" color="secondary">Consultar</button>
+    </div>
+    
+ 
+    <ion-card *ngFor="let item of list">
+      <div class="item-info">
+        <!-- <p><b class="title">Cod. Solicitação: </b><span class="text">{{item.cod_solicitacao}}</span></p> -->
+        <p><b class="title">Local: </b><span class="text">{{item.nome_unidade}}</span></p>
+        <p><b class="title">Serviço: </b><span class="text">{{item.servico}}</span></p>
+        <!-- <p><b class="title">Valor: </b><span class="text">{{item.vr_servico}}</span></p> -->
+        <p><b class="title">Status: </b><span class="text">{{item.status_solicitacao}}</span></p>
+        <p class="buttons">
+          <button ion-button class="btn-control" (click)="goPayment(item.cod_solicitacao)" *ngIf="item.status_solicitacao != 'SOLICITADO'" disabled color="secondary">Pagar</button>
+          <button ion-button class="btn-control" (click)="goPayment(item.cod_solicitacao)" *ngIf="item.status_solicitacao == 'SOLICITADO'" color="secondary">Pagar</button>
+          <button ion-button class="btn-control" (click)="cancelSol(item.cod_solicitacao)" *ngIf="item.status_solicitacao == 'CANCELADO' || item.status_solicitacao == 'AGENDADO' || item.status_solicitacao == 'AUTORIZADO' || item.status_solicitacao == 'CONCLUIDO'" disabled color="secondary">Cancelar</button>
+          <button ion-button class="btn-control" (click)="cancelSol(item.cod_solicitacao)" *ngIf="item.status_solicitacao != 'CANCELADO' && item.status_solicitacao != 'AGENDADO' && item.status_solicitacao != 'AUTORIZADO' && item.status_solicitacao != 'CONCLUIDO'" color="secondary">Cancelar</button>
+          <button ion-button class="btn-control" (click)="cancelSol(item.cod_solicitacao)" *ngIf="item.status_solicitacao !== 'AUTORIZADO'" disabled color="secondary">AGENDAR</button>
+          <button ion-button class="btn-control" (click)="goSchedule(item.cod_solicitacao)" *ngIf="item.status_solicitacao == 'AUTORIZADO'" color="secondary">AGENDAR</button>
+        </p>
+      </div>
+    </ion-card>
+</ion-content>

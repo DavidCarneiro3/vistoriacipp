@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <!-- <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons> -->
+    <ion-title>Solicitação de Agendamento</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="background">
+  <div fixed>
+    <section text-center margin-bottom class="section">
+      <p class="text-sec">Escolha para qual unidade deseja o agendamento.</p>
+      </section>
+    <ion-segment  scrollable="true" mode="ios" [(ngModel)]="unity">
+      
+      <ion-segment-button *ngFor="let item of unitys.RDATA; let i = index" (click)="update(item.cod_unidade_atendimento,item.nome_unidade)" value="{{item.nome_unidade}}">
+        {{item.nome_unidade}}
+        
+      </ion-segment-button>
+      
+    </ion-segment>
+  </div>
+
+  <div>
+ 
+      <ion-list>
+        <div *ngFor="let item of tasks">
+        <ion-item *ngIf="item.status_servico == 'ATIVO'" class="item">
+            
+            <h2>{{item.servico}}</h2>
+            <p>R$ {{item.vr_servico}},00</p>
+            <button ion-button class="btn-solicitar" color="secondary" (click)="solicitar(item.cod_servico_unidade)">Solicitar</button>
+        </ion-item>
+      </div>
+      </ion-list>
+  
+  
+   
+  </div>
+
+</ion-content>

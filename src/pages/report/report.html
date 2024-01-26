@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <!-- <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons> -->
+    <ion-title>Laudo Vistoria</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="title-pri">PRESTADOR</ion-card-title>
+      <ion-card-title  class="title-sec">  {{name}}</ion-card-title>
+      <ion-card-title  class="title-sec">  COD: {{num_requ}}</ion-card-title>
+      <p class="text" *ngIf="result"><b class="title">Proprietário: </b> {{result.proprietario}}</p>
+      <p class="text"><b class="title">Cpf/Cnpj: </b> {{cpf_cnpj}}</p>
+      <p class="text"><b class="title">Local: </b> {{place}}</p>
+      <p class="text"><b class="title">Data Solicitação: </b> {{dt_requ}}</p>
+      
+      
+    </ion-card-header>
+  </ion-card>
+  <div *ngIf="result">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title class="title-pri">VEICULO</ion-card-title>
+        <ion-card-title  class="title-sec">  PLACA: {{result.placa}}</ion-card-title>
+        <p class="text"><b class="title">Marca/Modelo: </b>{{result.marcaModelo}}</p>
+        <p class="text"><b class="title">Quilometragem: </b>{{result.quilometragem}}</p>
+        <p class="text"><b class="title">Combustível: </b> {{result.combustivel}}</p>
+        <p class="text"><b class="title">Cor: </b> {{result.corPredominante}}</p>
+        <p class="text"><b class="title">Ano/Modelo: </b> {{result.anoFabricacao +'/'+result.anoModelo}}</p>
+        <p class="text"><b class="title">Chassi: </b> {{result.chassi}}</p>
+        <p class="text"><b class="title">Documento: </b> {{result.situacaoDocumento}}</p>
+        
+      </ion-card-header>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title class="title-pri">VISTORIA</ion-card-title>
+        <ion-card-title  class="title-sec">  Situação: {{result.sitiacaoUsf}}</ion-card-title>
+        <p class="text"><b class="title">Data Vistoria: </b>{{result.dataVistoria | date: 'dd/MM/yyyy'}}</p>
+        <p class="text"><b class="title">Condutor: </b> {{result.condutor}}</p>
+        <p class="text"><b class="title">Categoria: </b> {{result.categoria}}</p>
+        <p class="text"><b class="title">Exercício: </b> {{result.exercicio }}</p>
+        <p class="text"><b class="title">Espécie: </b> {{result.especieTipo}}</p>
+        <p class="text"><b class="title">Certificado: </b> {{result.certificado}}</p>
+        
+      </ion-card-header>
+    </ion-card>
+  </div>
+</ion-content>
+<ion-footer class="footer">
+  <button ion-button size="large" block color="secondary" class="btn-comprar" (click)="download()">BAIXAR PDF
+  </button>
+
+</ion-footer>

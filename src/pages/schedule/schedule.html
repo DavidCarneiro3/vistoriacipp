@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <!-- <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons> -->
+    <ion-title>Agendar Solicitação</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="title-pri">{{name}}</ion-card-title>
+      <ion-card-title  class="title-sec"> <b>Cod. Solicitação:</b> {{num_requ}}</ion-card-title>
+      <p class="text"><b class="title">Cpf/Cnpj: </b> {{cpf_cnpj}}</p>
+      <p class="text"><b class="title">Local: </b> {{place}}</p>
+      <p class="text"><b class="title">Serviço: </b> {{service}}</p>
+      <p class="text"><b class="title">Data Solicitação: </b> {{dt_requ}}</p>
+      <p class="text"><b class="title">Status: </b> {{status_req}}</p>
+    </ion-card-header>
+  </ion-card>
+    <form #form="ngForm">
+      <ion-item class="item">
+        <ion-input name="placa" type="text" maxlength="7" placeholder="Placa*" [(ngModel)]="placa" (ngModelChange)="placa = $event.toLocaleUpperCase()"  required></ion-input>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-input name="dt_agendada" type="date"  maxlength="10" placeholder="Data*" [(ngModel)]="dt_agendada" required></ion-input> -->
+        <ion-datetime name="dt_agendada" displayFormat="DD/MM/YYYY" min="2018" max="2099-12-31" placeholder="dd/mm/aaaa" [(ngModel)]="dt_agendada"></ion-datetime>
+      </ion-item>
+      <button ion-button size="large" block color="secondary" class="btn-comprar" block [disabled]="form.invalid" (click)="schedule(placa,num_requ)">AGENDAR
+      </button>
+    </form>
+  
+
+</ion-content>
