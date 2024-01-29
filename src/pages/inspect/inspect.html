@@ -1190,9 +1190,11 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_freios_comp_discos" (ionChange)="itemReview(r_freios_comp_discos)">
+    <label class="subtitle">Lay Out e Outros</label>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_tacografo" (ionChange)="itemReview(r_layout_tacografo)">
       <ion-list-header class="title-header">
-        Comp. (discos. Etc) em bom estado
+        Tacógrafo en funcionamento
       </ion-list-header>
     
       <ion-item class="insp-item">
@@ -1208,6 +1210,861 @@
       <ion-item class="insp-item">
         <ion-label class="title">N/A</ion-label>
         <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_nome_motorista" (ionChange)="itemReview(r_layout_nome_motorista)">
+      <ion-list-header class="title-header">
+        Indicativo nome motorista e cobrador
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_preco_passagens" (ionChange)="itemReview(r_layout_preco_passagens)">
+      <ion-list-header class="title-header">
+        Indicativo preço das passagens (quando couber)
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_cap_lotacao" (ionChange)="itemReview(r_layout_cap_lotacao)">
+      <ion-list-header class="title-header">
+        Indicativo capacidade de lotacão
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_telefone_arce" (ionChange)="itemReview(r_layout_telefone_arce)">
+      <ion-list-header class="title-header">
+        Número do telefone da ARCE
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_origem_destino" (ionChange)="itemReview(r_layout_origem_destino)">
+      <ion-list-header class="title-header">
+        Indicativo de origem e destino de linha (quando couber)
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+    
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_nr_ordem" (ionChange)="itemReview(r_layout_nr_ordem)">
+      <ion-list-header class="title-header">
+        Número de ordem do veículo
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_pintura_padronizada" (ionChange)="itemReview(r_layout_pintura_padronizada)">
+      <ion-list-header class="title-header">
+        Pintura padronizada do veículo
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_logotipo_arce" (ionChange)="itemReview(r_layout_logotipo_arce)">
+      <ion-list-header class="title-header">
+        Logotipo ARCE
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_letreiro_tur_contratante" (ionChange)="itemReview(r_layout_letreiro_tur_contratante)">
+      <ion-list-header class="title-header">
+        Letreiro Ind. "Turismo" ou contratante (quando couber)
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_ar_condicionado" (ionChange)="itemReview(r_layout_ar_condicionado)">
+      <ion-list-header class="title-header">
+        Ar condicionado
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_banheiro" (ionChange)="itemReview(r_layout_banheiro)">
+      <ion-list-header class="title-header">
+        Banheiro em condições de uso (quando couber)
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_saida_emergencia" (ionChange)="itemReview(r_layout_saida_emergencia)">
+      <ion-list-header class="title-header">
+        Saída de emergência sinalizada
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_martelo_emergencia" (ionChange)="itemReview(r_layout_martelo_emergencia)">
+      <ion-list-header class="title-header">
+        Martelo de emergência sinalizado, caso exista
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_extintor" (ionChange)="itemReview(r_layout_extintor)">
+      <ion-list-header class="title-header">
+        Extintor de incêndio dentro das exigeências estabelecidas em lei
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_wifi" (ionChange)="itemReview(r_layout_wifi)">
+      <ion-list-header class="title-header">
+        Sitema de WI-FI
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <label class="subtitle">Carroceria</label>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_retrovisores" (ionChange)="itemReview(r_carroceria_retrovisores)">
+      <ion-list-header class="title-header">
+        Espelho retrovisores internos e externos
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_degraus" (ionChange)="itemReview(r_carroceria_degraus)">
+      <ion-list-header class="title-header">
+        Degrau escamoteável sem defeito
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_janelas" (ionChange)="itemReview(r_carroceria_janelas)">
+      <ion-list-header class="title-header">
+        Janelas funcionando
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_poltronas" (ionChange)="itemReview(r_carroceria_poltronas)">
+      <ion-list-header class="title-header">
+        Poltronas passageiros em bom estado
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_mec_poltron" (ionChange)="itemReview(r_carroceria_mec_poltron)">
+      <ion-list-header class="title-header">
+        Mecanismo poltrona sem defeito
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_tranca_bagagem" (ionChange)="itemReview(r_carroceria_tranca_bagagem)">
+      <ion-list-header class="title-header">
+        Trancas dos bagageiros funcionando
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_para_choques" (ionChange)="itemReview(r_carroceria_para_choques)">
+      <ion-list-header class="title-header">
+        Para-choques em bom estado
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_para_brisas" (ionChange)="itemReview(r_carroceria_para_brisas)">
+      <ion-list-header class="title-header">
+        Para-brisa em bom estado
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_laterais" (ionChange)="itemReview(r_carroceria_laterais)">
+      <ion-list-header class="title-header">
+        Laterais esquerda e direita normais
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_dianteira_traseira" (ionChange)="itemReview(r_carroceria_dianteira_traseira)">
+      <ion-list-header class="title-header">
+        Dianteira e traseira normais
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_descanso_pes" (ionChange)="itemReview(r_carroceria_descanso_pes)">
+      <ion-list-header class="title-header">
+        Mecanismo descanso pés normal
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_porta_trancando" (ionChange)="itemReview(r_carroceria_porta_trancando)">
+      <ion-list-header class="title-header">
+        Porta principal trancando
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_puxador_emergencia" (ionChange)="itemReview(r_carroceria_puxador_emergencia)">
+      <ion-list-header class="title-header">
+        Puxador emergência funcionado
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_quebra_sol" (ionChange)="itemReview(r_carroceria_quebra_sol)">
+      <ion-list-header class="title-header">
+        Quebra-sol funcionando
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_porta_embrulhos" (ionChange)="itemReview(r_carroceria_porta_embrulhos)">
+      <ion-list-header class="title-header">
+        Porta embrulhos em bom estado
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_cortina_divisoria" (ionChange)="itemReview(r_carroceria_cortina_divisoria)">
+      <ion-list-header class="title-header">
+        Cortina divisória de motorista
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_macaco" (ionChange)="itemReview(r_carroceria_macaco)">
+      <ion-list-header class="title-header">
+        Macaco funcionando
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_chave_rodas" (ionChange)="itemReview(r_carroceria_chave_rodas)">
+      <ion-list-header class="title-header">
+        Chave de rodas
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_triangulo" (ionChange)="itemReview(r_carroceria_triangulo)">
+      <ion-list-header class="title-header">
+        Triangulo em bom estado
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_vidraca_lateral" (ionChange)="itemReview(r_carroceria_vidraca_lateral)">
+      <ion-list-header class="title-header">
+        Vidraca lateral completa
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_cinto_motorista" (ionChange)="itemReview(r_carroceria_cinto_motorista)">
+      <ion-list-header class="title-header">
+        Cinto de seguranca motorista normal
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_cinto_passageiro" (ionChange)="itemReview(r_carroceria_cinto_passageiro)">
+      <ion-list-header class="title-header">
+        Cinto de seguranca passageiro normal
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_luz_placa" (ionChange)="itemReview(r_carroceria_luz_placa)">
+      <ion-list-header class="title-header">
+        Luz de placa acendendo
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_luz_freio" (ionChange)="itemReview(r_carroceria_luz_freio)">
+      <ion-list-header class="title-header">
+        Luz stop de freio funcionando
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">SIM</ion-label>
+        <ion-radio checked="true" value="SIM"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">NÃO</ion-label>
+        <ion-radio value="não"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">N/A</ion-label>
+        <ion-radio value="NA"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <label class="subtitle">Posto de cobranca</label>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_cobranca_catraca" (ionChange)="itemReview(r_cobranca_catraca)">
+      <ion-list-header class="title-header">
+        Catraca/Posicão
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">DANTEIRA</ion-label>
+        <ion-radio checked="true" value="dianteira"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">TRASEIRA</ion-label>
+        <ion-radio value="traseira"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group class="list-insp" [(ngModel)]="r_cobranca_validador" (ionChange)="itemReview(r_cobranca_validador)">
+      <ion-list-header class="title-header">
+        Validador/posição
+      </ion-list-header>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">DANTEIRA</ion-label>
+        <ion-radio checked="true" value="dianteira"></ion-radio>
+      </ion-item>
+    
+      <ion-item class="insp-item">
+        <ion-label class="title">TRASEIRA</ion-label>
+        <ion-radio value="traseira"></ion-radio>
       </ion-item>
     </ion-list>
     
