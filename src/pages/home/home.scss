@@ -2,11 +2,11 @@ page-home {
    
     
   ion-input{
-    background-color: #5f5f5e;
     border-radius: 5px;
     margin: 5px;
     color: #FFD400;
     padding: 5px;
+    background-color: #f1f1f1;
   }
   ion-label{
     -webkit-flex: none!important; 
@@ -20,6 +20,14 @@ page-home {
     background-color: #FFD400;
     color: white;
     text-align: center;
+  }
+
+  .toolbar-md-primary .bar-button-clear-md, .toolbar-md-primary .bar-button-default-md, .toolbar-md-primary .bar-button-outline-md, .toolbar-md-primary .toolbar-title-md  {
+    color: #fff;
+  }
+
+  .toolbar-ios-primary .toolbar-title-ios, .toolbar-ios-primary .bar-button-clear-ios, .toolbar-ios-primary .bar-button-default-ios {
+    color: #fff;
   }
   
   .item-info{
@@ -40,7 +48,7 @@ page-home {
     }
     .text{
       font-size: 20px;
-      color: #000;
+      color: #fff;
     }
   }
 

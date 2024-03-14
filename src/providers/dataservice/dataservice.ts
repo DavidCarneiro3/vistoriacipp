@@ -6,6 +6,8 @@ import 'rxjs/add/operator/map';
 import { Injectable } from '@angular/core';
 import * as sha512 from 'js-sha512';
 import { DatePipe } from '@angular/common';
+import { Observable } from 'rxjs/Observable';
+
 var request = require('request');
 
 /*
@@ -17,6 +19,7 @@ var request = require('request');
 @Injectable()
 export class DataserviceProvider {
 
+  // api = 'https://lovefyapp.com.br/necavaapi/api.php';
   api = 'https://necava.cipetran.com/api/api.php';
   //api = 'http://vivasvistorias.com.br/site/agendamento/api.php';
   key: string;
@@ -542,6 +545,8 @@ export class DataserviceProvider {
    })
   }
 
+  
+
   loadTecnicalManager(mytoken: string){
     // console.log('Mytoken in ListTasks',mytoken)
     // return this.nativeHttp.post(this.api,{token:mytoken, cod_solicitacao: cod_sol, key_app:this.key, acao:18}, {
@@ -829,26 +834,33 @@ export class DataserviceProvider {
    })
   }
 
-  createInspect(vistoria: any, prestador: any, veiculo: any, mytoken){
+  createInspect(vistoria: any, foto_frente: any, foto_traseira: any, foto_lateral1: any, foto_lateral2: any, foto_interna1: any, foto_interna2: any, mytoken: any){
     
     //console.log('Mytoken in CreateInspect',mytoken)
     // return this.nativeHttp.post(this.api,{token:mytoken,cpf_cnpj: cpf, placa_veiculo: placa, key_app:this.key, acao:201}, {
     //   'Content-Type':'application/json'
     // })
 
+    console.log("foto_frente", foto_frente);
+
     let headers = new Headers();
     headers.append('Content-type' , 'application/x-www-form-urlencoded');
 
     let options = new RequestOptions({headers: headers});
     let body = new URLSearchParams();
-    let acao: any = 205;
+    let acao: any = 667;
     let cred = 31;
     body.append("token", mytoken);
     body.append("key_app", this.key);
     body.append("acao", acao);
-    body.append("vistoria", JSON.stringify(vistoria));
-    body.append("prestador", JSON.stringify(prestador));
-    body.append("veiculo", JSON.stringify(veiculo));
+    body.append("vistoria", vistoria);
+    body.append("foto_veiculo_frente", foto_frente);
+    body.append("foto_veiculo_traseira", foto_traseira);
+    body.append("foto_veiculo_lateral1", foto_lateral1);
+    body.append("foto_veiculo_lateral2", foto_lateral2);
+    body.append("foto_veiculo_interna1", foto_interna1);
+    body.append("foto_veiculo_interna2", foto_interna2);
+    // body.append("veiculo", JSON.stringify(veiculo));
     body.append("credenciada", JSON.stringify(cred));
     // body.append("nome", user.nome);
     // body.append("telefone", user.phone);
@@ -856,9 +868,93 @@ export class DataserviceProvider {
     // body.append("login", user.login);
     // body.append("senha", user.senha);
 
+    let postData = new FormData();
+
+    // const blob1 = this.dataURItoBlob(foto_frente);
+    // const blob2 = this.dataURItoBlob(foto_traseira);
+    // const blob3 = this.dataURItoBlob(foto_lateral1);
+    // const blob4 = this.dataURItoBlob(foto_lateral2);
+    // const blob5 = this.dataURItoBlob(foto_interna1);
+    // const blob6 = this.dataURItoBlob(foto_interna2);
+
+    postData.append("token", mytoken);
+    postData.append("key_app", this.key);
+    postData.append("acao", acao);
+    postData.append("vistoria", JSON.stringify(vistoria));
+    postData.append("foto_veiculo_frente", foto_frente);
+    postData.append("foto_veiculo_traseira", foto_traseira);
+    postData.append("foto_veiculo_lateral1", foto_lateral1);
+    postData.append("foto_veiculo_lateral2", foto_lateral2);
+    postData.append("foto_veiculo_interna1", foto_interna1);
+    postData.append("foto_veiculo_interna2", foto_interna2);
+
+    
+    let data:Observable<any> = this.http.post(this.api,postData)
+   return data;
+
+    
+
+  //   return new Promise((resolve,reject) => {this.angHttp.post(this.api, body, options).map(
+  //     (res:Response)  => {
+  //       return res.json();
+  //     }
+  //   ).subscribe(data => {
+  //       resolve(data);
+  //     }, err => {
+  //         reject(err);
+  //     })
+  //  })
+  }
+
+  searchReport(cod_sol: any, mytoken: string){
+    let headers = new Headers();
+    headers.append('Content-type' , 'application/x-www-form-urlencoded');
+
+    let options = new RequestOptions({headers: headers});
+    let body = new URLSearchParams();
+
+    let postData = new FormData();
+    let acao: any = 668;
+    postData.append("token", mytoken);
+    postData.append("key_app", this.key);
+    postData.append("acao", acao);
+    postData.append("nr_os", cod_sol);
+
+    let data:Observable<any> = this.http.post(this.api,postData)
+   return data;
+
+  //   return new Promise((resolve,reject) => {this.angHttp.post(this.api, body, options).map(
+  //     (res:Response)  => {
+        
+        
+  //       return res;
+  //     }
+  //   ).subscribe(data => {
+  //       resolve(data);
+  //     }, err => {
+  //         reject(err);
+  //     })
+  //  })
+  }
+
+  getReport(cod_sol: any, mytoken: string){
+    let headers = new Headers();
+    headers.append('Content-type' , 'application/x-www-form-urlencoded');
+
+    let options = new RequestOptions({headers: headers});
+    let body = new URLSearchParams();
+    let acao: any = 668;
+    body.append("token", mytoken);
+    body.append("key_app", this.key);
+    body.append("acao", acao);
+    body.append("nr_os", cod_sol);
+    
+
     return new Promise((resolve,reject) => {this.angHttp.post(this.api, body, options).map(
       (res:Response)  => {
-        return res.json();
+        
+        
+        return res;
       }
     ).subscribe(data => {
         resolve(data);
@@ -866,6 +962,36 @@ export class DataserviceProvider {
           reject(err);
       })
    })
+  }
+
+  criarBlob(caminhoArquivo: string): Blob {
+    // Função para criar um Blob a partir do caminho do arquivo
+    // Esta função pode variar dependendo do seu caso de uso específico
+    // Aqui está um exemplo básico para carregar uma imagem a partir de um caminho de arquivo local
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', caminhoArquivo, false);
+    xhr.responseType = 'blob';
+    xhr.send();
+
+    return xhr.response;
+  }
+
+  // Helper function to convert base64 to Blob
+  private dataURItoBlob(dataURI: any): Blob {
+    if (!dataURI) {
+      console.error('dataURI is undefined or null', dataURI);
+      return new Blob();
+    }
+  
+    const byteString = atob(dataURI.split(',')[1]);
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const int8Array = new Uint8Array(arrayBuffer);
+  
+    for (let i = 0; i < byteString.length; i++) {
+      int8Array[i] = byteString.charCodeAt(i);
+    }
+  
+    return new Blob([int8Array], { type: 'image/jpeg' });
   }
 
 

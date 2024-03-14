@@ -8,7 +8,6 @@
 </ion-header>
 
 <ion-content>
-
   <ion-card>
       <ion-card-title class="title-pri">informações gerais</ion-card-title>
       <ion-grid class="grid-geral">
@@ -35,7 +34,7 @@
           </ion-item>
           <ion-item>
             <ion-label>Art Vinculada:</ion-label>
-            <ion-input type="text" [(ngModel)]="vistoria.art_vinculada" riquered placeholder="Informe o número da ART"></ion-input>
+            <ion-input style="width: 100px;" type="text" [(ngModel)]="vistoria.art_vinculada" riquered placeholder="Informe o número da ART"></ion-input>
           </ion-item>
       </ion-grid>
       <!-- <p class="text"><b class="title">Cpf: </b> {{prestador.cpf}}</p>
@@ -93,18 +92,14 @@
         <ion-label>Fone</ion-label>
         <ion-input disabled="true" type="text" [(ngModel)]="vistoria.fone_solicitante"></ion-input>
       </ion-item>
-      <ion-item>
-        <ion-label>UF*</ion-label>
-      </ion-item>
     </ion-list> 
   </ion-grid>
 </ion-card>
   <ion-card>
-    
       <ion-card-title class="title-pri">Características originais do veículo</ion-card-title>
         <ion-item>
           <ion-label>Tipo de veículo (Art. 7º):</ion-label>
-          <ion-input type="text" [(ngModel)]="vistoria.tipo" required (ngModelChange)="vistoria.tipo = $event.toLocaleUpperCase()"></ion-input>
+          <ion-input type="text" [(ngModel)]="vistoria.veiculo_tipo" required (ngModelChange)="vistoria.tipo = $event.toLocaleUpperCase()"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label>Placa:</ion-label>
@@ -136,7 +131,7 @@
         </ion-item>
         <ion-item>
           <ion-label>Pass em Pé:</ion-label>
-          <ion-input type="text" [(ngModel)]="vistoria.pass_em_pe" required (ngModelChange)="vistoria.pass_em_pe = $event.toLocaleUpperCase()"></ion-input>
+          <ion-input type="text" [(ngModel)]="vistoria.qtd_passageiros" required (ngModelChange)="vistoria.qtd_passageiros = $event.toLocaleUpperCase()"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label>Pass Sentados:</ion-label>
@@ -160,23 +155,23 @@
         </ion-item>
         <ion-item>
           <ion-label>POT:</ion-label>
-          <ion-input type="text" [(ngModel)]="vistoria.potencia" required (ngModelChange)="vistoria.pot_cil = $event.toLocaleUpperCase()"></ion-input>
+          <ion-input type="text" [(ngModel)]="vistoria.potencia" required (ngModelChange)="vistoria.potencia = $event.toLocaleUpperCase()"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label>CIL:</ion-label>
-          <ion-input type="text" [(ngModel)]="vistoria.cilindrada" required (ngModelChange)="vistoria.pot_cil = $event.toLocaleUpperCase()"></ion-input>
+          <ion-input type="text" [(ngModel)]="vistoria.cilindrada" required (ngModelChange)="vistoria.cilindrada = $event.toLocaleUpperCase()"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label>Ano Encarroçamento (Art. 10):</ion-label>
           <ion-input type="text" [(ngModel)]="vistoria.ano_fabricacao_carroceria" required (ngModelChange)="vistoria.ano_fabricacao_carroceria = $event.toLocaleUpperCase()"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label>Serviço Complementar (Radial, Regional ou Crajubar):</ion-label>
+          <ion-label>Serviço Comp. (Radial, Regional ou Crajubar):</ion-label>
           <ion-input type="text" [(ngModel)]="vistoria.servico_complementar" required (ngModelChange)="vistoria.servico_complementar = $event.toLocaleUpperCase()"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label>Área de Operação:</ion-label>
-          <ion-input type="text" [(ngModel)]="vistoria.servico_complementar" required (ngModelChange)="vistoria.servico_complementar = $event.toLocaleUpperCase()"></ion-input>
+          <ion-input type="text" [(ngModel)]="vistoria.area_operacao" required (ngModelChange)="vistoria.area_operacao = $event.toLocaleUpperCase()"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label>Ano Tacógrafo:</ion-label>
@@ -184,11 +179,11 @@
         </ion-item>
         <ion-item>
           <ion-label>Modelo Tacógrafo:</ion-label>
-          <ion-input type="text" [(ngModel)]="vistoria.modelo_tacografo" required (ngModelChange)="vistoria.modelo_tacografo = $event.toLocaleUpperCase()"></ion-input>
+          <ion-input type="text" [(ngModel)]="vistoria.taco_modelo" required (ngModelChange)="vistoria.taco_modelo = $event.toLocaleUpperCase()"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label>Marca Tacógrafo:</ion-label>
-          <ion-input type="text" [(ngModel)]="vistoria.marca_tacografo" required (ngModelChange)="vistoria.marca_tacografo = $event.toLocaleUpperCase()"></ion-input>
+          <ion-input type="text" [(ngModel)]="vistoria.taco_marca" required (ngModelChange)="vistoria.taco_marca = $event.toLocaleUpperCase()"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label>Número Tacógrafo:</ion-label>
@@ -196,42 +191,42 @@
         </ion-item>
         <ion-grid fixed>
           <ion-row>
-            <ion-col size="6"><button color="primary" class="btn-pic" ion-button (click)="openFrente()">Foto Frente do Veículo</button></ion-col>
+            <ion-col size="6"><button color="secondary" class="btn-pic" ion-button (click)="openFrente()">Foto Frente do Veículo</button></ion-col>
             <ion-col size="6">
               <img class="icon-inspect" [src]=foto_frente *ngIf="foto_frente" />
               <img class="icon-inspect" src="../../assets/imgs/frente.jpeg" *ngIf="!foto_frente" />
             </ion-col>
           </ion-row>
           <ion-row>
-            <ion-col size="6"><button color="primary" class="btn-pic" ion-button (click)="openTraseira()">Foto Traseira do Veículo</button></ion-col>
+            <ion-col size="6"><button color="secondary" class="btn-pic" ion-button (click)="openTraseira()">Foto Traseira do Veículo</button></ion-col>
             <ion-col size="6">
               <img class="icon-inspect" [src]=foto_traseira *ngIf="foto_traseira" />
               <img class="icon-inspect" src="../../assets/imgs/traseira.jpg" *ngIf="!foto_traseira" />
             </ion-col>
           </ion-row>
           <ion-row>
-            <ion-col size="6"><button color="primary" class="btn-pic" ion-button (click)="openLateral1()">Foto Lateral 1 do Veículo</button></ion-col>
+            <ion-col size="6"><button color="secondary" class="btn-pic" ion-button (click)="openLateral1()">Foto Lateral 1 do Veículo</button></ion-col>
             <ion-col size="6">
               <img class="icon-inspect" [src]=foto_lateral1 *ngIf="foto_lateral1"/>
               <img class="icon-inspect" src="../../assets/imgs/leteral1.jpg" *ngIf="!foto_lateral1" />
             </ion-col>
           </ion-row>
           <ion-row>
-            <ion-col size="6"><button color="primary" class="btn-pic" ion-button (click)="openLateral2()">Foto Lateral 2 do Veículo</button></ion-col>
+            <ion-col size="6"><button color="secondary" class="btn-pic" ion-button (click)="openLateral2()">Foto Lateral 2 do Veículo</button></ion-col>
             <ion-col size="6">
               <img class="icon-inspect" [src]=foto_lateral2 *ngIf="foto_lateral2"/>
               <img class="icon-inspect" src="../../assets/imgs/leteral2.jpg" *ngIf="!foto_lateral2" />
             </ion-col>
           </ion-row>
           <ion-row>
-            <ion-col size="6"><button color="primary" class="btn-pic" ion-button (click)="openInterna1()">Foto Interna 1 do Veículo</button></ion-col>
+            <ion-col size="6"><button color="secondary" class="btn-pic" ion-button (click)="openInterna1()">Foto Interna 1 do Veículo</button></ion-col>
             <ion-col size="6">
               <img class="icon-inspect" [src]=foto_interna1  *ngIf="foto_interna1"/>
               <img class="icon-inspect" src="../../assets/imgs/frente.jpeg" *ngIf="!foto_interna1"/>
             </ion-col>
           </ion-row>
           <ion-row>
-            <ion-col size="6"><button color="primary" class="btn-pic" ion-button (click)="openInterna2()">Foto Interna 2 do Veículo</button></ion-col>
+            <ion-col size="6"><button color="secondary" class="btn-pic" ion-button (click)="openInterna2()">Foto Interna 2 do Veículo</button></ion-col>
             <ion-col size="6">
               <img class="icon-inspect" [src]=foto_interna2  *ngIf="foto_interna2"/>
               <img class="icon-inspect" src="../../assets/imgs/traseira.jpg"  *ngIf="!foto_interna2"/>
@@ -244,7 +239,7 @@
     <ion-card-title class="title-pri">Resultados</ion-card-title>
     <label class="subtitle">Transmissão</label>
     
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_transmissao_embreagem" (ionChange)="itemReview(r_transmissao_embreagem)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_transmissao_embreagem" (ionChange)="itemReview(r_transmissao_embreagem)">
       <ion-list-header class="title-header">
         Enmbreagem
       </ion-list-header>
@@ -265,7 +260,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_transmissao_pedal_embreagem" (ionChange)="itemReview(r_transmissao_pedal_embreagem)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_transmissao_pedal_embreagem" (ionChange)="itemReview(r_transmissao_pedal_embreagem)">
       <ion-list-header class="title-header">
         Pedal da Enmbreagem
       </ion-list-header>
@@ -285,7 +280,7 @@
         <ion-radio value="NA"></ion-radio>
       </ion-item>
     </ion-list>
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_transmissao_pedal_acelerador" (ionChange)="itemReview(r_transmissao_pedal_acelerador)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_transmissao_pedal_acelerador" (ionChange)="itemReview(r_transmissao_pedal_acelerador)">
       <ion-list-header class="title-header">
         Pedal do Acelerador
       </ion-list-header>
@@ -308,7 +303,7 @@
 
     <label class="subtitle">Direção</label>
     
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_direcao_direcao" (ionChange)="itemReview(r_direcao_direcao)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_direcao_direcao" (ionChange)="itemReview(r_direcao_direcao)">
       <ion-list-header class="title-header">
         Direção
       </ion-list-header>
@@ -329,7 +324,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_direcao_sem_vazamento" (ionChange)="itemReview(r_direcao_sem_vazamento)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_direcao_sem_vazamento" (ionChange)="itemReview(r_direcao_sem_vazamento)">
       <ion-list-header class="title-header">
         Direção sem vazamento de óleo
       </ion-list-header>
@@ -352,7 +347,7 @@
 
     <label class="subtitle">Suspensão</label>
     
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_suspensao_amortecedores" (ionChange)="itemReview(r_suspensao_amortecedores)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_suspensao_amortecedores" (ionChange)="itemReview(r_suspensao_amortecedores)">
       <ion-list-header class="title-header">
         Amortecedores
       </ion-list-header>
@@ -373,7 +368,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_suspensao_bolsa_ar" (ionChange)="itemReview(r_suspensao_bolsa_ar)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_suspensao_bolsa_ar" (ionChange)="itemReview(r_suspensao_bolsa_ar)">
       <ion-list-header class="title-header">
         Bolsa de ar
       </ion-list-header>
@@ -394,7 +389,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_suspensao_feixes_molas" (ionChange)="itemReview(r_suspensao_feixes_molas)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_suspensao_feixes_molas" (ionChange)="itemReview(r_suspensao_feixes_molas)">
       <ion-list-header class="title-header">
         Feixes de mola
       </ion-list-header>
@@ -415,7 +410,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_suspensao_parafuso_v" (ionChange)="itemReview(r_suspensao_parafuso_v)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_suspensao_parafuso_v" (ionChange)="itemReview(r_suspensao_parafuso_v)">
       <ion-list-header class="title-header">
         Parafuso V
       </ion-list-header>
@@ -436,7 +431,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_suspensao_eixos" (ionChange)="itemReview(r_suspensao_eixos)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_suspensao_eixos" (ionChange)="itemReview(r_suspensao_eixos)">
       <ion-list-header class="title-header">
         Eixos
       </ion-list-header>
@@ -459,7 +454,7 @@
 
     <label class="subtitle">Motor</label>
     
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_motor_carter" (ionChange)="itemReview(r_motor_carter)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_motor_carter" (ionChange)="itemReview(r_motor_carter)">
       <ion-list-header class="title-header">
         Carter
       </ion-list-header>
@@ -480,7 +475,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_motor_lancamento_fumaca" (ionChange)="itemReview(r_motor_lancamento_fumaca)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_motor_lancamento_fumaca" (ionChange)="itemReview(r_motor_lancamento_fumaca)">
       <ion-list-header class="title-header">
         Lançamento de fumaça
       </ion-list-header>
@@ -500,7 +495,7 @@
         <ion-radio value="NA"></ion-radio>
       </ion-item>
     </ion-list>
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_motor_estrangulador" (ionChange)="itemReview(r_motor_estrangulador)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_motor_estrangulador" (ionChange)="itemReview(r_motor_estrangulador)">
       <ion-list-header class="title-header">
         Estrangulador
       </ion-list-header>
@@ -523,7 +518,7 @@
 
     <label class="subtitle">Alimentação</label>
     
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_alimentacao_entrada_ar" (ionChange)="itemReview(r_alimentacao_entrada_ar)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_alimentacao_entrada_ar" (ionChange)="itemReview(r_alimentacao_entrada_ar)">
       <ion-list-header class="title-header">
         Entrada de ar
       </ion-list-header>
@@ -544,7 +539,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_alimentacao_comb_sem_vazamento" (ionChange)="itemReview(r_alimentacao_comb_sem_vazamento)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_alimentacao_comb_sem_vazamento" (ionChange)="itemReview(r_alimentacao_comb_sem_vazamento)">
       <ion-list-header class="title-header">
         Combustível sem vazamento
       </ion-list-header>
@@ -567,7 +562,7 @@
     
     <label class="subtitle">Refrigeração</label>
     
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_refrigeracao_radiador" (ionChange)="itemReview(r_refrigeracao_radiador)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_refrigeracao_radiador" (ionChange)="itemReview(r_refrigeracao_radiador)">
       <ion-list-header class="title-header">
         Radiador sem vazamento
       </ion-list-header>
@@ -588,7 +583,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_refrigeracao_temperatura" (ionChange)="itemReview(r_refrigeracao_temperatura)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_refrigeracao_temperatura" (ionChange)="itemReview(r_refrigeracao_temperatura)">
       <ion-list-header class="title-header">
         Temperatura
       </ion-list-header>
@@ -611,7 +606,7 @@
 
     <label class="subtitle">Elétrica</label>
     
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_eletrica_limpador" (ionChange)="itemReview(r_eletrica_limpador)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_eletrica_limpador" (ionChange)="itemReview(r_eletrica_limpador)">
       <ion-list-header class="title-header">
         Limpador de para brisa
       </ion-list-header>
@@ -632,7 +627,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_eletrica_contagiro" (ionChange)="itemReview(r_eletrica_contagiro)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_eletrica_contagiro" (ionChange)="itemReview(r_eletrica_contagiro)">
       <ion-list-header class="title-header">
         Contagiro
       </ion-list-header>
@@ -652,7 +647,7 @@
         <ion-radio value="NA"></ion-radio>
       </ion-item>
     </ion-list>
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_eletrica_partida" (ionChange)="itemReview(r_eletrica_partida)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_eletrica_partida" (ionChange)="itemReview(r_eletrica_partida)">
       <ion-list-header class="title-header">
         Partida
       </ion-list-header>
@@ -673,7 +668,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_eletrica_alternador" (ionChange)="itemReview(r_eletrica_alternador)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_eletrica_alternador" (ionChange)="itemReview(r_eletrica_alternador)">
       <ion-list-header class="title-header">
         Alternador gerando normal
       </ion-list-header>
@@ -693,7 +688,7 @@
         <ion-radio value="NA"></ion-radio>
       </ion-item>
     </ion-list>
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_eletrica_luzes_salao" (ionChange)="itemReview(r_eletrica_luzes_salao)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_eletrica_luzes_salao" (ionChange)="itemReview(r_eletrica_luzes_salao)">
       <ion-list-header class="title-header">
         Luzes de salão acendem
       </ion-list-header>
@@ -714,7 +709,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_eletrica_setas" (ionChange)="itemReview(r_eletrica_setas)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_eletrica_setas" (ionChange)="itemReview(r_eletrica_setas)">
       <ion-list-header class="title-header">
         Setas acendendo
       </ion-list-header>
@@ -735,7 +730,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_eletrica_luzes_painel" (ionChange)="itemReview(r_eletrica_luzes_painel)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_eletrica_luzes_painel" (ionChange)="itemReview(r_eletrica_luzes_painel)">
       <ion-list-header class="title-header">
         Luzes do painel acendendo
       </ion-list-header>
@@ -755,7 +750,7 @@
         <ion-radio value="NA"></ion-radio>
       </ion-item>
     </ion-list>
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_eletrica_farol_alto" (ionChange)="itemReview(r_eletrica_farol_alto)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_eletrica_farol_alto" (ionChange)="itemReview(r_eletrica_farol_alto)">
       <ion-list-header class="title-header">
         Farol alto acendendo
       </ion-list-header>
@@ -776,7 +771,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_eletrica_farol_baixo" (ionChange)="itemReview(r_eletrica_farol_baixo)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_eletrica_farol_baixo" (ionChange)="itemReview(r_eletrica_farol_baixo)">
       <ion-list-header class="title-header">
         Farol baixo acendendo
       </ion-list-header>
@@ -796,7 +791,7 @@
         <ion-radio value="NA"></ion-radio>
       </ion-item>
     </ion-list>
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_eletrica_buzina" (ionChange)="itemReview(r_eletrica_buzina)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_eletrica_buzina" (ionChange)="itemReview(r_eletrica_buzina)">
       <ion-list-header class="title-header">
         Buzina funcionando
       </ion-list-header>
@@ -817,7 +812,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_eletrica_luzes_freio" (ionChange)="itemReview(r_eletrica_luzes_freio)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_eletrica_luzes_freio" (ionChange)="itemReview(r_eletrica_luzes_freio)">
       <ion-list-header class="title-header">
         Luzes stop de freio acendendo
       </ion-list-header>
@@ -837,7 +832,7 @@
         <ion-radio value="NA"></ion-radio>
       </ion-item>
     </ion-list>
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_eletrica_campainha" (ionChange)="itemReview(r_eletrica_campainha)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_eletrica_campainha" (ionChange)="itemReview(r_eletrica_campainha)">
       <ion-list-header class="title-header">
         Campainha funcionando
       </ion-list-header>
@@ -858,7 +853,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_eletrica_luz_itinerario" (ionChange)="itemReview(r_eletrica_luz_itinerario)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_eletrica_luz_itinerario" (ionChange)="itemReview(r_eletrica_luz_itinerario)">
       <ion-list-header class="title-header">
         Luz de itinerário acendendo
       </ion-list-header>
@@ -881,7 +876,7 @@
 
     <label class="subtitle">Rodagem</label>
     
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_rodagem_pneus_dimensoes" (ionChange)="itemReview(r_rodagem_pneus_dimensoes)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_rodagem_pneus_dimensoes" (ionChange)="itemReview(r_rodagem_pneus_dimensoes)">
       <ion-list-header class="title-header">
         Pneus e rodas de mesmas dimensões em cada eixo
       </ion-list-header>
@@ -902,7 +897,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_rodagem_pneus_bom_estado" (ionChange)="itemReview(r_rodagem_pneus_bom_estado)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_rodagem_pneus_bom_estado" (ionChange)="itemReview(r_rodagem_pneus_bom_estado)">
       <ion-list-header class="title-header">
         Pneus em bom estado
       </ion-list-header>
@@ -923,7 +918,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_rodagem_rodas_bom_estado" (ionChange)="itemReview(r_rodagem_rodas_bom_estado)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_rodagem_rodas_bom_estado" (ionChange)="itemReview(r_rodagem_rodas_bom_estado)">
       <ion-list-header class="title-header">
         Rodas em bom estado
       </ion-list-header>
@@ -944,7 +939,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_rodagem_stepe_bom_estado" (ionChange)="itemReview(r_rodagem_stepe_bom_estado)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_rodagem_stepe_bom_estado" (ionChange)="itemReview(r_rodagem_stepe_bom_estado)">
       <ion-list-header class="title-header">
         Estepe em bom estado
       </ion-list-header>
@@ -967,7 +962,7 @@
 
     <label class="subtitle">Freios</label>
     
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_freios_compressor" (ionChange)="itemReview(r_freios_compressor)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_freios_compressor" (ionChange)="itemReview(r_freios_compressor)">
       <ion-list-header class="title-header">
         Compressor carregando
       </ion-list-header>
@@ -988,7 +983,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_freios_sem_vazamento" (ionChange)="itemReview(r_freios_sem_vazamento)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_freios_sem_vazamento" (ionChange)="itemReview(r_freios_sem_vazamento)">
       <ion-list-header class="title-header">
         Sem vazamento de ar
       </ion-list-header>
@@ -1009,7 +1004,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_freios_estacionamento" (ionChange)="itemReview(r_freios_estacionamento)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_freios_estacionamento" (ionChange)="itemReview(r_freios_estacionamento)">
       <ion-list-header class="title-header">
         Freio estacionamento
       </ion-list-header>
@@ -1030,7 +1025,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_freios_reserv_oleo" (ionChange)="itemReview(r_freios_reserv_oleo)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_freios_reserv_oleo" (ionChange)="itemReview(r_freios_reserv_oleo)">
       <ion-list-header class="title-header">
         Reserv. Óleo freio s/ vazamento
       </ion-list-header>
@@ -1051,7 +1046,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_freios_pedal" (ionChange)="itemReview(r_freios_pedal)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_freios_pedal" (ionChange)="itemReview(r_freios_pedal)">
       <ion-list-header class="title-header">
         Pedal de freio
       </ion-list-header>
@@ -1072,7 +1067,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_freios_comp_discos" (ionChange)="itemReview(r_freios_comp_discos)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_freios_comp_discos" (ionChange)="itemReview(r_freios_comp_discos)">
       <ion-list-header class="title-header">
         Comp. (discos. Etc) em bom estado
       </ion-list-header>
@@ -1095,7 +1090,7 @@
 
     <label class="subtitle">Acessibilidade</label>
     
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_acessibilidade_rampa" (ionChange)="itemReview(r_acessibilidade_rampa)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_acessibilidade_rampa" (ionChange)="itemReview(r_acessibilidade_rampa)">
       <ion-list-header class="title-header">
         Rampa de acesso
       </ion-list-header>
@@ -1116,7 +1111,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_acessibilidade_cadeira_transbordo" (ionChange)="itemReview(r_acessibilidade_cadeira_transbordo)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_acessibilidade_cadeira_transbordo" (ionChange)="itemReview(r_acessibilidade_cadeira_transbordo)">
       <ion-list-header class="title-header">
         Cadeira de transbordo
       </ion-list-header>
@@ -1137,7 +1132,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_acessibilidade_letreiro" (ionChange)="itemReview(r_acessibilidade_letreiro)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_acessibilidade_letreiro" (ionChange)="itemReview(r_acessibilidade_letreiro)">
       <ion-list-header class="title-header">
         Letreiro luminoso
       </ion-list-header>
@@ -1158,7 +1153,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_acessibilidade_plataforma" (ionChange)="itemReview(r_acessibilidade_plataforma)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_acessibilidade_plataforma" (ionChange)="itemReview(r_acessibilidade_plataforma)">
       <ion-list-header class="title-header">
         Plataforma elevatória/posição
       </ion-list-header>
@@ -1174,7 +1169,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_acessibilidade_espaco_cadeirante" (ionChange)="itemReview(r_acessibilidade_espaco_cadeirante)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_acessibilidade_espaco_cadeirante" (ionChange)="itemReview(r_acessibilidade_espaco_cadeirante)">
       <ion-list-header class="title-header">
         Espaço do Cadeirante (sistema de ancoragem)/posição
       </ion-list-header>
@@ -1192,7 +1187,7 @@
 
     <label class="subtitle">Lay Out e Outros</label>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_tacografo" (ionChange)="itemReview(r_layout_tacografo)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_layout_tacografo" (ionChange)="itemReview(r_layout_tacografo)">
       <ion-list-header class="title-header">
         Tacógrafo en funcionamento
       </ion-list-header>
@@ -1213,7 +1208,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_nome_motorista" (ionChange)="itemReview(r_layout_nome_motorista)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_layout_nome_motorista" (ionChange)="itemReview(r_layout_nome_motorista)">
       <ion-list-header class="title-header">
         Indicativo nome motorista e cobrador
       </ion-list-header>
@@ -1234,7 +1229,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_preco_passagens" (ionChange)="itemReview(r_layout_preco_passagens)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_layout_preco_passagens" (ionChange)="itemReview(r_layout_preco_passagens)">
       <ion-list-header class="title-header">
         Indicativo preço das passagens (quando couber)
       </ion-list-header>
@@ -1255,7 +1250,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_cap_lotacao" (ionChange)="itemReview(r_layout_cap_lotacao)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_layout_cap_lotacao" (ionChange)="itemReview(r_layout_cap_lotacao)">
       <ion-list-header class="title-header">
         Indicativo capacidade de lotacão
       </ion-list-header>
@@ -1276,7 +1271,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_telefone_arce" (ionChange)="itemReview(r_layout_telefone_arce)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_layout_telefone_arce" (ionChange)="itemReview(r_layout_telefone_arce)">
       <ion-list-header class="title-header">
         Número do telefone da ARCE
       </ion-list-header>
@@ -1297,7 +1292,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_origem_destino" (ionChange)="itemReview(r_layout_origem_destino)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_layout_origem_destino" (ionChange)="itemReview(r_layout_origem_destino)">
       <ion-list-header class="title-header">
         Indicativo de origem e destino de linha (quando couber)
       </ion-list-header>
@@ -1318,7 +1313,7 @@
       </ion-item>
     </ion-list>
     
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_nr_ordem" (ionChange)="itemReview(r_layout_nr_ordem)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_layout_nr_ordem" (ionChange)="itemReview(r_layout_nr_ordem)">
       <ion-list-header class="title-header">
         Número de ordem do veículo
       </ion-list-header>
@@ -1339,7 +1334,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_pintura_padronizada" (ionChange)="itemReview(r_layout_pintura_padronizada)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_layout_pintura_padronizada" (ionChange)="itemReview(r_layout_pintura_padronizada)">
       <ion-list-header class="title-header">
         Pintura padronizada do veículo
       </ion-list-header>
@@ -1360,7 +1355,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_logotipo_arce" (ionChange)="itemReview(r_layout_logotipo_arce)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_layout_logotipo_arce" (ionChange)="itemReview(r_layout_logotipo_arce)">
       <ion-list-header class="title-header">
         Logotipo ARCE
       </ion-list-header>
@@ -1381,7 +1376,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_letreiro_tur_contratante" (ionChange)="itemReview(r_layout_letreiro_tur_contratante)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_layout_letreiro_tur_contratante" (ionChange)="itemReview(r_layout_letreiro_tur_contratante)">
       <ion-list-header class="title-header">
         Letreiro Ind. "Turismo" ou contratante (quando couber)
       </ion-list-header>
@@ -1402,7 +1397,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_ar_condicionado" (ionChange)="itemReview(r_layout_ar_condicionado)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_layout_ar_condicionado" (ionChange)="itemReview(r_layout_ar_condicionado)">
       <ion-list-header class="title-header">
         Ar condicionado
       </ion-list-header>
@@ -1423,7 +1418,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_banheiro" (ionChange)="itemReview(r_layout_banheiro)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_layout_banheiro" (ionChange)="itemReview(r_layout_banheiro)">
       <ion-list-header class="title-header">
         Banheiro em condições de uso (quando couber)
       </ion-list-header>
@@ -1444,7 +1439,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_saida_emergencia" (ionChange)="itemReview(r_layout_saida_emergencia)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_layout_saida_emergencia" (ionChange)="itemReview(r_layout_saida_emergencia)">
       <ion-list-header class="title-header">
         Saída de emergência sinalizada
       </ion-list-header>
@@ -1465,7 +1460,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_martelo_emergencia" (ionChange)="itemReview(r_layout_martelo_emergencia)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_layout_martelo_emergencia" (ionChange)="itemReview(r_layout_martelo_emergencia)">
       <ion-list-header class="title-header">
         Martelo de emergência sinalizado, caso exista
       </ion-list-header>
@@ -1486,7 +1481,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_extintor" (ionChange)="itemReview(r_layout_extintor)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_layout_extintor" (ionChange)="itemReview(r_layout_extintor)">
       <ion-list-header class="title-header">
         Extintor de incêndio dentro das exigeências estabelecidas em lei
       </ion-list-header>
@@ -1507,7 +1502,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_layout_wifi" (ionChange)="itemReview(r_layout_wifi)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_layout_wifi" (ionChange)="itemReview(r_layout_wifi)">
       <ion-list-header class="title-header">
         Sitema de WI-FI
       </ion-list-header>
@@ -1530,7 +1525,7 @@
 
     <label class="subtitle">Carroceria</label>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_retrovisores" (ionChange)="itemReview(r_carroceria_retrovisores)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_carroceria_retrovisores" (ionChange)="itemReview(r_carroceria_retrovisores)">
       <ion-list-header class="title-header">
         Espelho retrovisores internos e externos
       </ion-list-header>
@@ -1551,7 +1546,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_degraus" (ionChange)="itemReview(r_carroceria_degraus)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_carroceria_degraus" (ionChange)="itemReview(r_carroceria_degraus)">
       <ion-list-header class="title-header">
         Degrau escamoteável sem defeito
       </ion-list-header>
@@ -1572,7 +1567,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_janelas" (ionChange)="itemReview(r_carroceria_janelas)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_carroceria_janelas" (ionChange)="itemReview(r_carroceria_janelas)">
       <ion-list-header class="title-header">
         Janelas funcionando
       </ion-list-header>
@@ -1593,7 +1588,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_poltronas" (ionChange)="itemReview(r_carroceria_poltronas)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_carroceria_poltronas" (ionChange)="itemReview(r_carroceria_poltronas)">
       <ion-list-header class="title-header">
         Poltronas passageiros em bom estado
       </ion-list-header>
@@ -1614,7 +1609,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_mec_poltron" (ionChange)="itemReview(r_carroceria_mec_poltron)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_carroceria_mec_poltrona" (ionChange)="itemReview(r_carroceria_mec_poltrona)">
       <ion-list-header class="title-header">
         Mecanismo poltrona sem defeito
       </ion-list-header>
@@ -1635,7 +1630,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_tranca_bagagem" (ionChange)="itemReview(r_carroceria_tranca_bagagem)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_carroceria_tranca_bagagem" (ionChange)="itemReview(r_carroceria_tranca_bagagem)">
       <ion-list-header class="title-header">
         Trancas dos bagageiros funcionando
       </ion-list-header>
@@ -1656,7 +1651,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_para_choques" (ionChange)="itemReview(r_carroceria_para_choques)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_carroceria_para_choques" (ionChange)="itemReview(r_carroceria_para_choques)">
       <ion-list-header class="title-header">
         Para-choques em bom estado
       </ion-list-header>
@@ -1677,7 +1672,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_para_brisas" (ionChange)="itemReview(r_carroceria_para_brisas)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_carroceria_para_brisas" (ionChange)="itemReview(r_carroceria_para_brisas)">
       <ion-list-header class="title-header">
         Para-brisa em bom estado
       </ion-list-header>
@@ -1698,7 +1693,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_laterais" (ionChange)="itemReview(r_carroceria_laterais)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_carroceria_laterais" (ionChange)="itemReview(r_carroceria_laterais)">
       <ion-list-header class="title-header">
         Laterais esquerda e direita normais
       </ion-list-header>
@@ -1719,7 +1714,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_dianteira_traseira" (ionChange)="itemReview(r_carroceria_dianteira_traseira)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_carroceria_dianteira_traseira" (ionChange)="itemReview(r_carroceria_dianteira_traseira)">
       <ion-list-header class="title-header">
         Dianteira e traseira normais
       </ion-list-header>
@@ -1740,7 +1735,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_descanso_pes" (ionChange)="itemReview(r_carroceria_descanso_pes)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_carroceria_descanso_pes" (ionChange)="itemReview(r_carroceria_descanso_pes)">
       <ion-list-header class="title-header">
         Mecanismo descanso pés normal
       </ion-list-header>
@@ -1761,7 +1756,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_porta_trancando" (ionChange)="itemReview(r_carroceria_porta_trancando)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_carroceria_porta_trancando" (ionChange)="itemReview(r_carroceria_porta_trancando)">
       <ion-list-header class="title-header">
         Porta principal trancando
       </ion-list-header>
@@ -1782,7 +1777,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_puxador_emergencia" (ionChange)="itemReview(r_carroceria_puxador_emergencia)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_carroceria_puxador_emergencia" (ionChange)="itemReview(r_carroceria_puxador_emergencia)">
       <ion-list-header class="title-header">
         Puxador emergência funcionado
       </ion-list-header>
@@ -1803,7 +1798,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_quebra_sol" (ionChange)="itemReview(r_carroceria_quebra_sol)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_carroceria_quebra_sol" (ionChange)="itemReview(r_carroceria_quebra_sol)">
       <ion-list-header class="title-header">
         Quebra-sol funcionando
       </ion-list-header>
@@ -1824,7 +1819,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_porta_embrulhos" (ionChange)="itemReview(r_carroceria_porta_embrulhos)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_carroceria_porta_embrulhos" (ionChange)="itemReview(r_carroceria_porta_embrulhos)">
       <ion-list-header class="title-header">
         Porta embrulhos em bom estado
       </ion-list-header>
@@ -1845,7 +1840,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_cortina_divisoria" (ionChange)="itemReview(r_carroceria_cortina_divisoria)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_carroceria_cortina_divisoria" (ionChange)="itemReview(r_carroceria_cortina_divisoria)">
       <ion-list-header class="title-header">
         Cortina divisória de motorista
       </ion-list-header>
@@ -1866,7 +1861,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_macaco" (ionChange)="itemReview(r_carroceria_macaco)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_carroceria_macaco" (ionChange)="itemReview(r_carroceria_macaco)">
       <ion-list-header class="title-header">
         Macaco funcionando
       </ion-list-header>
@@ -1887,7 +1882,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_chave_rodas" (ionChange)="itemReview(r_carroceria_chave_rodas)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_carroceria_chave_rodas" (ionChange)="itemReview(r_carroceria_chave_rodas)">
       <ion-list-header class="title-header">
         Chave de rodas
       </ion-list-header>
@@ -1908,7 +1903,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_triangulo" (ionChange)="itemReview(r_carroceria_triangulo)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_carroceria_triangulo" (ionChange)="itemReview(r_carroceria_triangulo)">
       <ion-list-header class="title-header">
         Triangulo em bom estado
       </ion-list-header>
@@ -1929,7 +1924,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_vidraca_lateral" (ionChange)="itemReview(r_carroceria_vidraca_lateral)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_carroceria_vidraca_lateral" (ionChange)="itemReview(r_carroceria_vidraca_lateral)">
       <ion-list-header class="title-header">
         Vidraca lateral completa
       </ion-list-header>
@@ -1950,7 +1945,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_cinto_motorista" (ionChange)="itemReview(r_carroceria_cinto_motorista)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_carroceria_cinto_motorista" (ionChange)="itemReview(r_carroceria_cinto_motorista)">
       <ion-list-header class="title-header">
         Cinto de seguranca motorista normal
       </ion-list-header>
@@ -1971,7 +1966,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_cinto_passageiro" (ionChange)="itemReview(r_carroceria_cinto_passageiro)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_carroceria_cinto_passageiro" (ionChange)="itemReview(r_carroceria_cinto_passageiro)">
       <ion-list-header class="title-header">
         Cinto de seguranca passageiro normal
       </ion-list-header>
@@ -1992,7 +1987,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_luz_placa" (ionChange)="itemReview(r_carroceria_luz_placa)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_carroceria_luz_placa" (ionChange)="itemReview(r_carroceria_luz_placa)">
       <ion-list-header class="title-header">
         Luz de placa acendendo
       </ion-list-header>
@@ -2013,7 +2008,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_carroceria_luz_freio" (ionChange)="itemReview(r_carroceria_luz_freio)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_carroceria_luz_freio" (ionChange)="itemReview(r_carroceria_luz_freio)">
       <ion-list-header class="title-header">
         Luz stop de freio funcionando
       </ion-list-header>
@@ -2036,35 +2031,35 @@
 
     <label class="subtitle">Posto de cobranca</label>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_cobranca_catraca" (ionChange)="itemReview(r_cobranca_catraca)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_cobranca_catraca" (ionChange)="itemReview(r_cobranca_catraca)">
       <ion-list-header class="title-header">
         Catraca/Posicão
       </ion-list-header>
     
       <ion-item class="insp-item">
-        <ion-label class="title">DANTEIRA</ion-label>
-        <ion-radio checked="true" value="dianteira"></ion-radio>
+        <ion-label class="title">DIANTEIRA</ion-label>
+        <ion-radio checked="true" value="DIANTEIRA"></ion-radio>
       </ion-item>
     
       <ion-item class="insp-item">
         <ion-label class="title">TRASEIRA</ion-label>
-        <ion-radio value="traseira"></ion-radio>
+        <ion-radio value="TRASEIRA"></ion-radio>
       </ion-item>
     </ion-list>
 
-    <ion-list radio-group class="list-insp" [(ngModel)]="r_cobranca_validador" (ionChange)="itemReview(r_cobranca_validador)">
+    <ion-list radio-group class="list-insp" [(ngModel)]="vistoria.r_cobranca_validador" (ionChange)="itemReview(r_cobranca_validador)">
       <ion-list-header class="title-header">
         Validador/posição
       </ion-list-header>
     
       <ion-item class="insp-item">
-        <ion-label class="title">DANTEIRA</ion-label>
-        <ion-radio checked="true" value="dianteira"></ion-radio>
+        <ion-label class="title">DIANTEIRA</ion-label>
+        <ion-radio checked="true" value="DIANTEIRA"></ion-radio>
       </ion-item>
     
       <ion-item class="insp-item">
         <ion-label class="title">TRASEIRA</ion-label>
-        <ion-radio value="traseira"></ion-radio>
+        <ion-radio value="TRASEIRA"></ion-radio>
       </ion-item>
     </ion-list>
     
@@ -2073,7 +2068,7 @@
 </ion-content>
 <ion-footer class="footer">
   
-  <button ion-button size="large" block color="secondary" class="btn-comprar" (click)="sendInspect(prestador,vistoria, vistoria)">ENVIAR VISTORIA
+  <button ion-button size="large" block color="secondary" class="btn-comprar" (click)="sendInspect(prestador,vistoria)">ENVIAR VISTORIA
   </button>
 
 </ion-footer>

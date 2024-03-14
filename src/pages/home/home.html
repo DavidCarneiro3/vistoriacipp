@@ -1,7 +1,7 @@
 
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title><span class="text">Olá {{name || 'visitante'}} </span></ion-title>
+    <ion-title class="text"><span>Olá {{name || 'visitante'}} </span></ion-title>
     <ion-buttons end>
       <button ion-button clear color="white" (click)="clear()">
         <ion-icon name="log-out"></ion-icon>
@@ -17,14 +17,15 @@
     <ion-card>
       <ion-card-header class="title-pri">
         <ion-card-title class="title">INFORME O NÚMERO DA OS</ion-card-title>
+        <ion-card-subtititle class="title">Para consultar situação do Laudo</ion-card-subtititle>
       </ion-card-header>
       <ion-list>
-      <ion-item class="item">
-        <!-- <ion-label floating>Ordem de Serviço</ion-label> -->
-        <ion-input type="text" [(ngModel)]="ordemServico"></ion-input>
-      </ion-item>
-        </ion-list> 
-      </ion-card>
+        <ion-item class="item">
+          <!-- <ion-label floating>Ordem de Serviço</ion-label> -->
+          <ion-input type="text" [(ngModel)]="ordemServico"></ion-input>
+        </ion-item>
+      </ion-list> 
+    </ion-card>
     <!-- <ion-card *ngFor="let item of list">
       <div class="item-info">
         <p><b class="title">Solicitante: </b><span class="text">{{item.usu_nome}}</span></p>

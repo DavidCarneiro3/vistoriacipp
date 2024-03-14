@@ -6,7 +6,13 @@ alias:
 agenda_cipp
 
 senha: 
-parkfor123
+agendacipp@123
+
+################
+chave: agenda_cipp.keystore
+senha: agendacipp@123
+
+C:\Users\david.carneiro\Documents\vistoriacipp\extra\agenda_cipp.keystore
 
 -----------------------------------------------------------------------------------------------
 -- PASSO A PASSO

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { InspectPage } from './inspect';
 
@@ -9,5 +9,6 @@ import { InspectPage } from './inspect';
   imports: [
     IonicPageModule.forChild(InspectPage),
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class InspectPageModule {}

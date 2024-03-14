@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 // import { Router } from '@angular/router';
-import { IonicPage, LoadingController, NavController, NavParams } from 'ionic-angular';
+import { AlertController, IonicPage, LoadingController, NavController, NavParams } from 'ionic-angular';
 import { DataserviceProvider } from '../../providers/dataservice/dataservice';
 import { DatePipe } from '@angular/common';
 import { Storage } from '@ionic/storage';
@@ -9,6 +9,8 @@ import * as sha512 from 'js-sha512';
 import { InspectPage } from '../inspect/inspect';
 import { ListRequestPage } from '../list-request/list-request';
 import { LoginPage } from '../login/login';
+import { ControlPage } from '../control/control';
+import { InfoPage } from '../info/info';
 
 @IonicPage()
 @Component({
@@ -48,6 +50,7 @@ export class HomePage {
               private service: DataserviceProvider,
               public loading: LoadingController,
               private storage: Storage,
+              public alert: AlertController,
               public navCtrl: NavController,
               public navParams: NavParams) {
                 
@@ -68,6 +71,17 @@ export class HomePage {
     })
   }
 
+  async presentAlert(title: string,msg: string) {
+    const alert = await this.alert.create({
+      cssClass: 'my-custom-class',
+      title: title,
+      message: msg,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
 
   getUser(token: string){
     const loader = this.loading.create({
@@ -75,12 +89,24 @@ export class HomePage {
     });
     loader.present()
     this.service.getUser(token)
-    .then(data => {
-      loader.dismiss()
+    .then((data: any) => {
       let parse: any = data
-      this.user = parse.RDATA
-      console.log('Usuario',this.user)
-      this.name = this.user['nome'];
+      if(data.RESULT == "SUCESS"){
+        loader.dismiss()
+        
+        this.user = parse.RDATA
+        console.log('Usuario',this.user)
+        this.name = this.user['nome'];
+      }else{
+        this.presentAlert('Erro!', parse.MSG_ERRO);
+        this.storage.clear();
+        loader.dismiss()
+        this.navCtrl.setRoot(LoginPage);
+      }
+    },
+    err => {
+      console.log("Erro", err)
+      loader.dismiss();
     })
   }
 
@@ -126,8 +152,21 @@ export class HomePage {
   send(cod){
     // this.request.person = this.user['tipo_pessoa']
     // this.request.cod_user = this.user['cod_sys_usuario']
-    console.log('Dados Solicitação',cod)
-    this.navCtrl.push(InspectPage,{cod: cod})
+    // console.log('Dados Solicitação',cod)
+    // this.navCtrl.push(ControlPage,{cod: cod})
+
+    this.service.searchReport(cod, this.token)
+    .subscribe((data: any) => {
+      console.log('Resposta Laudo',data);
+      if(data.RESULT == "ERROR"){
+        this.navCtrl.push(InfoPage,{cod: cod})
+      }else{
+        this.navCtrl.push(InspectPage,{cod: cod})
+      }
+    }, err => {
+      console.log("Erro Resposta Laudo", err);
+      this.navCtrl.push(ControlPage,{cod: cod})
+    })
   }
 
   clear(){

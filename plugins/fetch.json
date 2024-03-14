@@ -103,10 +103,28 @@
     "is_top_level": true,
     "variables": {}
   },
+  "cordova-plugin-file-opener2": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-file-opener2@3.0.5"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-geolocation": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-geolocation@5.0.0"
+    },
+    "is_top_level": true,
+    "variables": {
+      "GEOLOCATION_USAGE_DESCRIPTION": "O app usa a localização junto com as fotos da inspeção"
+    }
+  },
   "cordova-plugin-camera": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-camera@4.1.0"
+      "id": "cordova-plugin-camera@5.0.3"
     },
     "is_top_level": true,
     "variables": {}

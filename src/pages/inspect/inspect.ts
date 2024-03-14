@@ -4,6 +4,8 @@ import { DataserviceProvider } from '../../providers/dataservice/dataservice';
 import { Storage } from '@ionic/storage';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { FormGroup, FormControl } from '@angular/forms';
+import { ControlPage } from '../control/control';
+import { Geolocation } from '@ionic-native/geolocation';
 
 /**
  * Generated class for the InspectPage page.
@@ -18,6 +20,25 @@ import { FormGroup, FormControl } from '@angular/forms';
   templateUrl: "inspect.html",
 })
 export class InspectPage {
+  // addTextToImage(text: string) {
+  //   const canvas: HTMLCanvasElement = this.canvas.nativeElement;
+  //   const context = canvas.getContext('2d');
+
+  //   const image = new Image();
+  //   image.src = this.capturedImage.toString();
+  //   image.onload = () => {
+  //     canvas.width = image.width;
+  //     canvas.height = image.height;
+
+  //     // Desenha a imagem
+  //     context.drawImage(image, 0, 0);
+
+  //     // Adiciona texto
+  //     context.font = '20px Arial';
+  //     context.fillStyle = 'white';
+  //     context.fillText(text, 20, 40); // Ajuste a posição conforme necessário
+  //   };
+  // }
   r_transmissao_embreagem: any;
   r_transmissao_pedal_embreagem: any;
   r_transmissao_pedal_acelerador: any;
@@ -114,7 +135,7 @@ export class InspectPage {
   managers: [];
   foto_frente: any;
   foto_traseira: any;
-  foto_leteral1: any;
+  foto_lateral1: any;
   foto_lateral2: any;
   foto_interna1: any;
   foto_interna2: any;
@@ -158,12 +179,12 @@ export class InspectPage {
     fabricante_modelo_chassi:"",
     fabricante_modelo_carroceria:"",
     ano_modelo:"",
-    pot_cil:"",
     ano_encarrocamento:"",
     servico_complementar:"",
     area_operacao:"",
-    tacografo_ano:"",
-    tacografo_modelo:"",
+    art_vinculada:"",
+    taco_ano:"",
+    taco_modelo:"",
     tacografo_marca:"",
     tacografo_numero:"",
     foto_veiculo_frente:"",
@@ -172,102 +193,107 @@ export class InspectPage {
     foto_veiculo_lateral2:"",
     foto_veiculo_interna1:"",
     foto_veiculo_interna2:"",
-    r_transmissao_embreagem:"",
-    r_transmissao_pedal_embreagem:"",
-    r_transmissao_pedal_acelerador:"",
-    r_direcao_direcao:"",
-    r_direcao_sem_vazamento:"",
-    r_suspensao_amortecedores:"",
-    r_suspensao_bolsa_ar:"",
-    r_suspensao_feixes_molas:"",
-    r_suspensao_parafuso_v:"",
-    r_suspensao_eixos:"",
-    r_motor_carter:"",
-    r_motor_lancamento_fumaca:"",
-    r_motor_estrangulador:"",
-    r_alimentacao_entrada_ar:"",
-    r_alimentacao_comb_sem_vazamento:"",
-    r_refrigeracao_radiador:"",
-    r_refrigeracao_temperatura:"",
-    r_eletrica_limpador:"",
-    r_eletrica_contagiro:"",
-    r_eletrica_partida:"",
-    r_eletrica_alternador:"",
-    r_eletrica_luzes_salao:"",
-    r_eletrica_setas:"",
-    r_eletrica_luzes_painel:"",
-    r_eletrica_farol_alto:"",
-    r_eletrica_farol_baixo:"",
-    r_eletrica_buzina:"",
-    r_eletrica_luzes_freio:"",
-    r_eletrica_campainha:"",
-    r_eletrica_luz_itinerario:"",
-    r_rodagem_pneus_dimensoes:"",
-    r_rodagem_pneus_bom_estado:"",
-    r_rodagem_rodas_bom_estado:"",
-    r_rodagem_stepe_bom_estado:"",
-    r_freios_compressor:"",
-    r_freios_sem_vazamento:"",
-    r_freios_estacionamento:"",
-    r_freios_reserv_oleo:"",
-    r_freios_pedal:"",
-    r_freios_comp_discos:"",
-    r_layout_tacografo:"",
-    r_layout_nome_motorista:"",
-    r_layout_preco_passagens:"",
-    r_layout_cap_lotacao:"",
-    r_layout_telefone_arce:"",
-    r_layout_origem_destino:"",
-    r_layout_nr_ordem:"",
-    r_layout_pintura_padronizada:"",
-    r_layout_logotipo_arce:"",
-    r_layout_letreiro_tur_contratante:"",
-    r_layout_ar_condicionado:"",
-    r_layout_banheiro:"",
-    r_layout_saida_emergencia:"",
-    r_layout_martelo_emergencia:"",
-    r_layout_extintor:"",
-    r_layout_wifi:"",
-    r_carroceria_retrovisores:"",
-    r_carroceria_degraus:"",
-    r_carroceria_janelas:"",
-    r_carroceria_poltronas:"",
-    r_carroceria_mec_poltrona:"",
-    r_carroceria_tranca_bagagem:"",
-    r_carroceria_para_choques:"",
-    r_carroceria_para_brisas:"",
-    r_carroceria_laterais:"",
-    r_carroceria_dianteira_traseira:"",
-    r_carroceria_descanso_pes:"",
-    r_carroceria_porta_trancando:"",
-    r_carroceria_puxador_emergencia:"",
-    r_carroceria_quebra_sol:"",
-    r_carroceria_porta_embrulhos:"",
-    r_carroceria_cortina_divisoria:"",
-    r_carroceria_macaco:"",
-    r_carroceria_chave_rodas:"",
-    r_carroceria_triangulo:"",
-    r_carroceria_vidraca_lateral:"",
-    r_carroceria_cinto_motorista:"",
-    r_carroceria_cinto_passageiro:"",
-    r_carroceria_luz_placa:"",
-    r_carroceria_luz_freio:"",
+    r_transmissao_embreagem:"SIM",
+    r_transmissao_pedal_embreagem:"SIM",
+    r_transmissao_pedal_acelerador:"SIM",
+    r_direcao_direcao:"SIM",
+    r_direcao_sem_vazamento:"SIM",
+    r_suspensao_amortecedores:"SIM",
+    r_suspensao_bolsa_ar:"SIM",
+    r_suspensao_feixes_molas:"SIM",
+    r_suspensao_parafuso_v:"SIM",
+    r_suspensao_eixos:"SIM",
+    r_motor_carter:"SIM",
+    r_motor_lancamento_fumaca:"SIM",
+    r_motor_estrangulador:"SIM",
+    r_alimentacao_entrada_ar:"SIM",
+    r_alimentacao_comb_sem_vazamento:"SIM",
+    r_refrigeracao_radiador:"SIM",
+    r_refrigeracao_temperatura:"SIM",
+    r_eletrica_limpador:"SIM",
+    r_eletrica_contagiro:"SIM",
+    r_eletrica_partida:"SIM",
+    r_eletrica_alternador:"SIM",
+    r_eletrica_luzes_salao:"SIM",
+    r_eletrica_setas:"SIM",
+    r_eletrica_luzes_painel:"SIM",
+    r_eletrica_farol_alto:"SIM",
+    r_eletrica_farol_baixo:"SIM",
+    r_eletrica_buzina:"SIM",
+    r_eletrica_luzes_freio:"SIM",
+    r_eletrica_campainha:"SIM",
+    r_eletrica_luz_itinerario:"SIM",
+    r_rodagem_pneus_dimensoes:"SIM",
+    r_rodagem_pneus_bom_estado:"SIM",
+    r_rodagem_rodas_bom_estado:"SIM",
+    r_rodagem_stepe_bom_estado:"SIM",
+    r_freios_compressor:"SIM",
+    r_freios_sem_vazamento:"SIM",
+    r_freios_estacionamento:"SIM",
+    r_freios_reserv_oleo:"SIM",
+    r_freios_pedal:"SIM",
+    r_freios_comp_discos:"SIM",
+    r_layout_tacografo:"SIM",
+    r_layout_nome_motorista:"SIM",
+    r_layout_preco_passagens:"SIM",
+    r_layout_cap_lotacao:"SIM",
+    r_layout_telefone_arce:"SIM",
+    r_layout_origem_destino:"SIM",
+    r_layout_nr_ordem:"SIM",
+    r_layout_pintura_padronizada:"SIM",
+    r_layout_logotipo_arce:"SIM",
+    r_layout_letreiro_tur_contratante:"SIM",
+    r_layout_ar_condicionado:"SIM",
+    r_layout_banheiro:"SIM",
+    r_layout_saida_emergencia:"SIM",
+    r_layout_martelo_emergencia:"SIM",
+    r_layout_extintor:"SIM",
+    r_layout_wifi:"SIM",
+    r_carroceria_retrovisores:"SIM",
+    r_carroceria_degraus:"SIM",
+    r_carroceria_janelas:"SIM",
+    r_carroceria_poltronas:"SIM",
+    r_carroceria_mec_poltrona:"SIM",
+    r_carroceria_tranca_bagagem:"SIM",
+    r_carroceria_para_choques:"SIM",
+    r_carroceria_para_brisas:"SIM",
+    r_carroceria_laterais:"SIM",
+    r_carroceria_dianteira_traseira:"SIM",
+    r_carroceria_descanso_pes:"SIM",
+    r_carroceria_porta_trancando:"SIM",
+    r_carroceria_puxador_emergencia:"SIM",
+    r_carroceria_quebra_sol:"SIM",
+    r_carroceria_porta_embrulhos:"SIM",
+    r_carroceria_cortina_divisoria:"SIM",
+    r_carroceria_macaco:"SIM",
+    r_carroceria_chave_rodas:"SIM",
+    r_carroceria_triangulo:"SIM",
+    r_carroceria_vidraca_lateral:"SIM",
+    r_carroceria_cinto_motorista:"SIM",
+    r_carroceria_cinto_passageiro:"SIM",
+    r_carroceria_luz_placa:"SIM",
+    r_carroceria_luz_freio:"SIM",
     dt_inspecao:"",
     dt_vencimento:"",
     responsavel_tecnico:"",
-    art_vinculada:"",
-    r_acessibilidade_rampa:"",
-    r_acessibilidade_cadeira_transbordo:"",
-    r_acessibilidade_letreiro:"",
-    r_acessibilidade_plataforma:"",
-    r_acessibilidade_espaco_cadeirante:"",
-    r_cobranca_catraca:"",
-    r_cobranca_validador:"",
+    r_acessibilidade_rampa:"SIM",
+    r_acessibilidade_cadeira_transbordo:"SIM",
+    r_acessibilidade_letreiro:"SIM",
+    r_acessibilidade_plataforma:"SIM",
+    r_acessibilidade_espaco_cadeirante:"SIM",
+    r_cobranca_catraca:"DIANTEIRA",
+    r_cobranca_validador:"DIANTEIRA",
+    gps_foto_frente: 0,
+    gps_foto_traseira: 0,
+    gps_foto_lateral1: 0,
+    gps_foto_lateral2: 0,
+    gps_foto_interna1: 0,
+    gps_foto_interna2: 0
   };
   vistoria = {
-    r_transmissao_embreagem: true,
-    r_transmissao_pedal_embreagem: true,
-    r_transmissao_pedal_acelerador: true,
+    r_transmissao_embreagem: "SIM",
+    r_transmissao_pedal_embreagem: "SIM",
+    r_transmissao_pedal_acelerador: "SIM",
     cod_transportadora: null,
     cnpj_transportadora: "",
     transportadora_nome:"",
@@ -276,6 +302,7 @@ export class InspectPage {
     aliquota_csl: "",
     aliquota_ir: "",
     aliquota_pis: "",
+    art_vinculada: "",
     ano_fabricacao: "",
     ano_fabricacao_carroceria: "",
     ano_modelo: "",
@@ -429,6 +456,7 @@ export class InspectPage {
     observacao: "",
     painel: "",
     pbt: "",
+    passageiros_em_pe: "",
     placa_classificada: "",
     placa_nf: "",
     potencia: "",
@@ -478,7 +506,103 @@ export class InspectPage {
     vr_aliquota_cofins: "",
     vr_aliquota_csl: "",
     vr_aliquota_ir: "",
-    vr_aliquota_pis: ""
+    vr_aliquota_pis: "",
+    foto_frente: null,
+    foto_traseira: null,
+    foto_lateral1: null,
+    foto_lateral2: null,
+    foto_interna1: null,
+    foto_interna2: null,
+    r_direcao_direcao:"SIM",
+    r_direcao_sem_vazamento:"SIM",
+    r_suspensao_amortecedores:"SIM",
+    r_suspensao_bolsa_ar:"SIM",
+    r_suspensao_feixes_molas:"SIM",
+    r_suspensao_parafuso_v:"SIM",
+    r_suspensao_eixos:"SIM",
+    r_motor_carter:"SIM",
+    r_motor_lancamento_fumaca:"SIM",
+    r_motor_estrangulador:"SIM",
+    r_alimentacao_entrada_ar:"SIM",
+    r_alimentacao_comb_sem_vazamento:"SIM",
+    r_refrigeracao_radiador:"SIM",
+    r_refrigeracao_temperatura:"SIM",
+    r_eletrica_limpador:"SIM",
+    r_eletrica_contagiro:"SIM",
+    r_eletrica_partida:"SIM",
+    r_eletrica_alternador:"SIM",
+    r_eletrica_luzes_salao:"SIM",
+    r_eletrica_setas:"SIM",
+    r_eletrica_luzes_painel:"SIM",
+    r_eletrica_farol_alto:"SIM",
+    r_eletrica_farol_baixo:"SIM",
+    r_eletrica_buzina:"SIM",
+    r_eletrica_luzes_freio:"SIM",
+    r_eletrica_campainha:"SIM",
+    r_eletrica_luz_itinerario:"SIM",
+    r_rodagem_pneus_dimensoes:"SIM",
+    r_rodagem_pneus_bom_estado:"SIM",
+    r_rodagem_rodas_bom_estado:"SIM",
+    r_rodagem_stepe_bom_estado:"SIM",
+    r_freios_compressor:"SIM",
+    r_freios_sem_vazamento:"SIM",
+    r_freios_estacionamento:"SIM",
+    r_freios_reserv_oleo:"SIM",
+    r_freios_pedal:"SIM",
+    r_freios_comp_discos:"SIM",
+    r_layout_tacografo:"SIM",
+    r_layout_nome_motorista:"SIM",
+    r_layout_preco_passagens:"SIM",
+    r_layout_cap_lotacao:"SIM",
+    r_layout_telefone_arce:"SIM",
+    r_layout_origem_destino:"SIM",
+    r_layout_nr_ordem:"SIM",
+    r_layout_pintura_padronizada:"SIM",
+    r_layout_logotipo_arce:"SIM",
+    r_layout_letreiro_tur_contratante:"SIM",
+    r_layout_ar_condicionado:"SIM",
+    r_layout_banheiro:"SIM",
+    r_layout_saida_emergencia:"SIM",
+    r_layout_martelo_emergencia:"SIM",
+    r_layout_extintor:"SIM",
+    r_layout_wifi:"SIM",
+    r_carroceria_retrovisores:"SIM",
+    r_carroceria_degraus:"SIM",
+    r_carroceria_janelas:"SIM",
+    r_carroceria_poltronas:"SIM",
+    r_carroceria_mec_poltrona:"SIM",
+    r_carroceria_tranca_bagagem:"SIM",
+    r_carroceria_para_choques:"SIM",
+    r_carroceria_para_brisas:"SIM",
+    r_carroceria_laterais:"SIM",
+    r_carroceria_dianteira_traseira:"SIM",
+    r_carroceria_descanso_pes:"SIM",
+    r_carroceria_porta_trancando:"SIM",
+    r_carroceria_puxador_emergencia:"SIM",
+    r_carroceria_quebra_sol:"SIM",
+    r_carroceria_porta_embrulhos:"SIM",
+    r_carroceria_cortina_divisoria:"SIM",
+    r_carroceria_macaco:"SIM",
+    r_carroceria_chave_rodas:"SIM",
+    r_carroceria_triangulo:"SIM",
+    r_carroceria_vidraca_lateral:"SIM",
+    r_carroceria_cinto_motorista:"SIM",
+    r_carroceria_cinto_passageiro:"SIM",
+    r_carroceria_luz_placa:"SIM",
+    r_carroceria_luz_freio:"SIM",
+    r_acessibilidade_rampa:"SIM",
+    r_acessibilidade_cadeira_transbordo:"SIM",
+    r_acessibilidade_letreiro:"SIM",
+    r_acessibilidade_plataforma:"DIANTEIRA",
+    r_acessibilidade_espaco_cadeirante:"DIANTEIRA",
+    r_cobranca_catraca:"SIM",
+    r_cobranca_validador:"SIM",
+    gps_foto_frente: "",
+    gps_foto_traseira: "",
+    gps_foto_lateral1: "",
+    gps_foto_lateral2: "",
+    gps_foto_interna1: "",
+    gps_foto_interna2: ""
   };
   veiculo = {
     placa: "",
@@ -505,6 +629,7 @@ export class InspectPage {
     public navParams: NavParams,
     public navCtrl: NavController,
     public actionSheetCtrl: ActionSheetController,
+    private geolocation: Geolocation,
     private camera: Camera
   ) {
     this.cod_sol = this.navParams.get("cod");
@@ -513,6 +638,7 @@ export class InspectPage {
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad InspectPage");
+    
     this.storage.get("token").then((val) => {
       this.token = val;
       console.log("request Inspect Token", this.token);
@@ -532,30 +658,57 @@ export class InspectPage {
 
   getRequest(token, cod) {
     const loader = this.loading.create({
-      content: "Carregando...",
+      content: "Carregando Geolocalização...",
     });
     loader.present();
-    this.dataservice.loadInspect(token, cod).then((data) => {
-      let parse: any = data;
-      console.log("Parse", parse);
-      this.vistoria = Object.assign(parse.RDATA);
-      console.log("Parse", this.vistoria);
-      this.obj_vistoria.aliquota = this.vistoria.aliquota;
-      this.obj_vistoria.aliquota_cofins = this.vistoria.aliquota_cofins;
-      this.obj_vistoria.aliquota_csl = this.vistoria.aliquota_csl;
-      this.obj_vistoria.aliquota_ir = this.vistoria.aliquota_ir;
-      this.obj_vistoria.aliquota_pis = this.vistoria.aliquota_pis;
-      this.obj_vistoria.ano_modelo = this.vistoria.ano_modelo;
-      this.obj_vistoria.pot_cil = this.vistoria.potencia+"/"+this.vistoria.cilindrada;
-      this.obj_vistoria.placa = this.vistoria.placa_nf;
-      this.obj_vistoria.veiculo_tipo = this.vistoria.tipo;
-      this.obj_vistoria.nr_ordem = this.vistoria.nr_ordem;
-      this.obj_vistoria.renavam = this.vistoria.renavam;
-      this.obj_vistoria.chassi = this.vistoria.chassi;
-      this.obj_vistoria.cor = this.vistoria.cor;
-      this.obj_vistoria.combustivel = this.vistoria.combustivel;
-      this.obj_vistoria.combustivel = this.vistoria.combustivel;
+    this.dataservice.loadInspect(token, cod).then((data: any) => {
+      
+      console.log("Data", data);
+      
+      
+      if(data.RESULT != 'ERROR'){
+        let parse: any = data.RDATA;
+        console.log("Parse", parse);
+        // this.vistoria = Object.assign(parse.RDATA);
+        console.log("Vistoria", this.vistoria);
+        this.vistoria.nr_os = parse.nr_os;
+        this.vistoria.aliquota = parse.aliquota;
+        this.vistoria.aliquota_cofins = parse.aliquota_cofins;
+        this.vistoria.aliquota_csl = parse.aliquota_csl;
+        this.vistoria.aliquota_ir = parse.aliquota_ir;
+        this.vistoria.aliquota_pis = parse.aliquota_pis;
+        this.vistoria.ano_modelo = parse.ano_modelo;
+        this.vistoria.nr_ordem = parse.nr_ordem;
+        this.vistoria.renavam = parse.renavam;
+        this.vistoria.chassi = parse.chassi;
+        this.vistoria.cor = parse.cor;
+        this.vistoria.combustivel = parse.combustivel;
+        this.vistoria.combustivel = parse.combustivel;
+        this.vistoria.nome_proprietario = parse.nome_proprietario;
+        this.vistoria.cnpj_transportadora = parse.cnpj_transportadora;
+        this.vistoria.cod_transportadora = parse.cod_transportadora;
+        this.vistoria.cep = parse.cep;
+        this.vistoria.logradouro = parse.logradouro;
+        this.vistoria.bairro = parse.bairro;
+        this.vistoria.municipio = parse.municipio;
+        this.vistoria.fone_solicitante = parse.fone_solicitante;
+        this.vistoria.uf = parse.uf;
+        this.vistoria.marca_modelo = parse.marca_modelo
+        this.vistoria.potencia = parse.potencia;
+        this.vistoria.cilindrada = parse.cilindrada;
+        this.vistoria.placa_nf = parse.placa_nf;
+        this.vistoria.art_vinculada = parse.art_vinculada;
 
+        loader.dismiss();
+      }else{
+        this.presentAlert("Erro", data.MSG_ERRO);
+        this.navCtrl.pop();
+        loader.dismiss();
+      }
+      
+    },
+    err => {
+      console.log("Erro", err);
       loader.dismiss();
     });
   }
@@ -592,18 +745,188 @@ export class InspectPage {
   }
 
   itemReview(item){
-    console.log("item",item);
+    // console.log("item",item);
   }
 
-  sendInspect(prestador, veiculo, vistoria) {
+  getPosition1(){
+    const loader = this.loading.create({
+      content: "Carregando Geolocalização...",
+    });
+    loader.present();
+    const options = {
+      enableHighAccuracy: false,
+      
+      maximumAge: 0,
+    };
+    this.geolocation.getCurrentPosition(options).then((resp) => {
+      console.log("resp", resp);
+      // error((error) => {
+      //   console.error('Erro ao obter a localização', error);
+      // });
+      const latitude = resp.coords.latitude;
+      const longitude = resp.coords.longitude;
+
+      console.log("latitude", latitude);
+      console.log("longitude", longitude);
+
+      this.vistoria.gps_foto_frente = latitude.toString()+','+longitude.toString();
+  
+      loader.dismiss();
+    })
+  }
+  getPosition2(){
+    const loader = this.loading.create({
+      content: "Carregando Geolocalização...",
+    });
+    loader.present();
+    const options = {
+      enableHighAccuracy: false,
+      
+      maximumAge: 0,
+    };
+    this.geolocation.getCurrentPosition(options).then((resp) => {
+      console.log("resp", resp);
+      // .catch((error) => {
+      //   console.error('Erro ao obter a localização', error);
+      // });
+      const latitude = resp.coords.latitude;
+      const longitude = resp.coords.longitude;
+
+      console.log("latitude", latitude);
+      console.log("longitude", longitude);
+
+      this.vistoria.gps_foto_interna1 = latitude.toString()+','+longitude.toString();
+  
+      loader.dismiss();
+    })
+  }
+  getPosition3(){
+    const loader = this.loading.create({
+      content: "Carregando Geolocalização...",
+    });
+    loader.present();
+    const options = {
+      enableHighAccuracy: false,
+      
+      maximumAge: 0,
+    };
+    this.geolocation.getCurrentPosition(options).then((resp) => {
+      // .catch((error) => {
+      //   console.error('Erro ao obter a localização', error);
+      // });
+      const latitude = resp.coords.latitude;
+      const longitude = resp.coords.longitude;
+
+      console.log("latitude", latitude);
+      console.log("longitude", longitude);
+
+      this.vistoria.gps_foto_interna2 = latitude.toString()+','+longitude.toString();
+  
+      loader.dismiss();
+    })
+  }
+  getPosition4(){
+    const loader = this.loading.create({
+      content: "Carregando Geolocalização...",
+    });
+    loader.present();
+    const options = {
+      enableHighAccuracy: false,
+      
+      maximumAge: 0,
+    };
+    this.geolocation.getCurrentPosition(options).then((resp) => {
+      // .catch((error) => {
+      //   console.error('Erro ao obter a localização', error);
+      // });
+      const latitude = resp.coords.latitude;
+      const longitude = resp.coords.longitude;
+
+      console.log("latitude", latitude);
+      console.log("longitude", longitude);
+
+      this.vistoria.gps_foto_lateral1 = latitude.toString()+','+longitude.toString();
+
+      loader.dismiss();
+    })
+  }
+  getPosition5(){
+    const loader = this.loading.create({
+      content: "Carregando Geolocalização...",
+    });
+    loader.present();
+    const options = {
+      enableHighAccuracy: false,
+      
+      maximumAge: 0,
+    };
+    this.geolocation.getCurrentPosition(options).then((resp) => {
+      // .catch((error) => {
+      //   console.error('Erro ao obter a localização', error);
+      // });
+      const latitude = resp.coords.latitude;
+      const longitude = resp.coords.longitude;
+
+      console.log("latitude", latitude);
+      console.log("longitude", longitude);
+
+      this.vistoria.gps_foto_lateral2 = latitude.toString()+','+longitude.toString();  
+      
+      loader.dismiss();
+    })
+  }
+  getPosition6(){
+    const loader = this.loading.create({
+      content: "Carregando Geolocalização...",
+    });
+    loader.present();
+    const options = {
+      enableHighAccuracy: false,
+      
+      maximumAge: 0,
+    };
+    this.geolocation.getCurrentPosition(options).then((resp) => {
+      console.log("resp traseira", resp);
+      // .catch((error) => {
+      //   console.error('Erro ao obter a localização', error);
+      // });
+      const latitude = resp.coords.latitude;
+      const longitude = resp.coords.longitude;
+
+      console.log("latitude", latitude);
+      console.log("longitude", longitude);
+
+      this.vistoria.gps_foto_traseira = latitude.toString()+','+longitude.toString();
+  
+      loader.dismiss();
+    })
+  }
+
+  async presentAlert(title: string,msg: string) {
+    const alert = await this.alert.create({
+      cssClass: 'my-custom-class',
+      title: title,
+      message: msg,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  sendInspect(prestador, vistoria) {
     console.log("Prestador", prestador);
-    console.log("Veículo", veiculo);
     console.log("Vistoria", vistoria);
     this.dataservice
-      .createInspect(vistoria, prestador, veiculo, this.token)
-      .then((data) => {
+      .createInspect(vistoria, this.foto_frente, this.foto_traseira, this.foto_lateral1, this.foto_lateral2, this.foto_interna1, this.foto_interna2, this.token)
+      .subscribe((data) => {
         let parse: any = data;
         console.log(parse);
+        if(parse['RESULT'] == 'SUCESS'){
+          this.presentAlert('Sucesso!', 'Vistoria enviada!')
+          this.navCtrl.push(ControlPage,{cod: this.cod_sol})
+        }else{
+          this.presentAlert('Erro!', parse['MSG_ERRO'])
+        }
       });
   }
 
@@ -636,9 +959,29 @@ export class InspectPage {
     actionSheet.present();
   }
 
-  openCamera(){
+  // addTextToImage(text: string) {
+  //   const canvas: HTMLCanvasElement = this.canvas.nativeElement;
+  //   const context = canvas.getContext('2d');
+
+  //   const image = new Image();
+  //   image.src = this.capturedImage.toString();
+  //   image.onload = () => {
+  //     canvas.width = image.width;
+  //     canvas.height = image.height;
+
+  //     // Desenha a imagem
+  //     context.drawImage(image, 0, 0);
+
+  //     // Adiciona texto
+  //     context.font = '20px Arial';
+  //     context.fillStyle = 'white';
+  //     context.fillText(text, 20, 40); // Ajuste a posição conforme necessário
+  //   };
+  // }
+
+  async openCamera(){
     const options: CameraOptions = {
-      quality: 100,
+     
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
@@ -648,14 +991,16 @@ export class InspectPage {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64 (DATA_URL):
      this.foto_frente = 'data:image/jpeg;base64,' + imageData;
+     this.getPosition1();
     }, (err) => {
      // Handle error
      console.log('Erro',err)
     });
+    
   }
   openGallery(){
     const options: CameraOptions = {
-      quality: 100,
+     
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
@@ -667,7 +1012,8 @@ export class InspectPage {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64 (DATA_URL):
      this.foto_frente = 'data:image/jpeg;base64,' + imageData;
-     console.log('foto_frente',this.foto_frente)
+     this.getPosition1();
+    //  console.log('foto_frente',this.foto_frente)
     }, (err) => {
      // Handle error
      console.log('Erro',err)
@@ -687,7 +1033,7 @@ export class InspectPage {
         },{
           text: 'Buscar na Galeria',
           handler: () => {
-            this.openGalleryTraseira()
+            this.openGalleryTraseira();
             console.log('Archive clicked');
           }
         },{
@@ -704,7 +1050,7 @@ export class InspectPage {
 
   openCameraTraseira(){
     const options: CameraOptions = {
-      quality: 100,
+     
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
@@ -714,6 +1060,7 @@ export class InspectPage {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64 (DATA_URL):
      this.foto_traseira = 'data:image/jpeg;base64,' + imageData;
+     this.getPosition6();
     }, (err) => {
      // Handle error
      console.log('Erro',err)
@@ -721,7 +1068,7 @@ export class InspectPage {
   }
   openGalleryTraseira(){
     const options: CameraOptions = {
-      quality: 100,
+     
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
@@ -733,6 +1080,7 @@ export class InspectPage {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64 (DATA_URL):
      this.foto_traseira = 'data:image/jpeg;base64,' + imageData;
+     this.getPosition6();
     }, (err) => {
      // Handle error
      console.log('Erro',err)
@@ -769,7 +1117,7 @@ export class InspectPage {
 
   openCameraLateral1(){
     const options: CameraOptions = {
-      quality: 100,
+     
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
@@ -778,7 +1126,8 @@ export class InspectPage {
     this.camera.getPicture(options).then((imageData) => {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64 (DATA_URL):
-     this.foto_leteral1 = 'data:image/jpeg;base64,' + imageData;
+     this.foto_lateral1 = 'data:image/jpeg;base64,' + imageData;
+     this.getPosition4();
     }, (err) => {
      // Handle error
      console.log('Erro',err)
@@ -786,7 +1135,7 @@ export class InspectPage {
   }
   openGalleryLateral1(){
     const options: CameraOptions = {
-      quality: 100,
+     
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
@@ -797,7 +1146,8 @@ export class InspectPage {
     this.camera.getPicture(options).then((imageData) => {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64 (DATA_URL):
-     this.foto_leteral1 = 'data:image/jpeg;base64,' + imageData;
+     this.foto_lateral1 = 'data:image/jpeg;base64,' + imageData;
+     this.getPosition4();
     }, (err) => {
      // Handle error
      console.log('Erro',err)
@@ -834,7 +1184,7 @@ export class InspectPage {
 
   openCameraLateral2(){
     const options: CameraOptions = {
-      quality: 100,
+     
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
@@ -844,6 +1194,7 @@ export class InspectPage {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64 (DATA_URL):
      this.foto_lateral2 = 'data:image/jpeg;base64,' + imageData;
+     this.getPosition5();
     }, (err) => {
      // Handle error
      console.log('Erro',err)
@@ -851,7 +1202,7 @@ export class InspectPage {
   }
   openGalleryLateral2(){
     const options: CameraOptions = {
-      quality: 100,
+     
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
@@ -863,6 +1214,7 @@ export class InspectPage {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64 (DATA_URL):
      this.foto_lateral2 = 'data:image/jpeg;base64,' + imageData;
+     this.getPosition5();
     }, (err) => {
      // Handle error
      console.log('Erro',err)
@@ -899,7 +1251,7 @@ export class InspectPage {
 
   openCameraInterna1(){
     const options: CameraOptions = {
-      quality: 100,
+     
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
@@ -909,6 +1261,7 @@ export class InspectPage {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64 (DATA_URL):
      this.foto_interna1 = 'data:image/jpeg;base64,' + imageData;
+     this.getPosition2();
     }, (err) => {
      // Handle error
      console.log('Erro',err)
@@ -916,7 +1269,7 @@ export class InspectPage {
   }
   openGalleryInterna1(){
     const options: CameraOptions = {
-      quality: 100,
+     
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
@@ -927,7 +1280,8 @@ export class InspectPage {
     this.camera.getPicture(options).then((imageData) => {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64 (DATA_URL):
-     this.foto_interna2 = 'data:image/jpeg;base64,' + imageData;
+     this.foto_interna1 = 'data:image/jpeg;base64,' + imageData;
+     this.getPosition2();
     }, (err) => {
      // Handle error
      console.log('Erro',err)
@@ -964,7 +1318,7 @@ export class InspectPage {
 
   openCameraInterna2(){
     const options: CameraOptions = {
-      quality: 100,
+     
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
@@ -974,6 +1328,7 @@ export class InspectPage {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64 (DATA_URL):
      this.foto_interna2 = 'data:image/jpeg;base64,' + imageData;
+     this.getPosition3();
     }, (err) => {
      // Handle error
      console.log('Erro',err)
@@ -981,7 +1336,7 @@ export class InspectPage {
   }
   openGalleryInterna2(){
     const options: CameraOptions = {
-      quality: 100,
+     
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
@@ -993,6 +1348,7 @@ export class InspectPage {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64 (DATA_URL):
      this.foto_interna2 = 'data:image/jpeg;base64,' + imageData;
+     this.getPosition3();
     }, (err) => {
      // Handle error
      console.log('Erro',err)

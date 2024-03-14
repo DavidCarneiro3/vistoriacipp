@@ -18,6 +18,14 @@ page-inspect {
     height: 2.5em;
   }
 
+  ion-item{
+    text-align: left;
+  }
+  
+  ion-datetime{
+    width: 15rem;
+  }
+
   ion-input{
     border: 1px solid #ccc;
       border-radius: 5px;
@@ -29,21 +37,22 @@ page-inspect {
       word-break: break-all!important;
       text-overflow: clip!important;
       white-space: normal!important;
-      color: #000;
+      color: #000!important;
       // border: 1px solid blue;
-      width: 7.5em;
+      width: 10.5em;
       height: 2.5em;
+      text-align: left!important;
   }
 
   .subtitle{
     color: #FFD400;
-    font-size: 1.9em;
+    font-size: 1.5em;
     margin-left: 1em;
     margin-top: 1em;
   }
 
   .title{
-    font-size: 1em!important;
+    font-size: 0.8em!important;
     color: #FFD400!important;
     text-align: middle left!important;
   }

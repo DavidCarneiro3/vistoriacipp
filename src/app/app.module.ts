@@ -1,5 +1,5 @@
 // ANGULAR AND IONIC 
-import {  ErrorHandler, NgModule } from "@angular/core";
+import {  CUSTOM_ELEMENTS_SCHEMA, ErrorHandler, NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { HttpClientModule } from "@angular/common/http";
 import { TextMaskModule } from 'angular2-text-mask';
@@ -15,6 +15,9 @@ import { Clipboard } from '@ionic-native/clipboard';
 import { BrMaskerModule } from 'brmasker-ionic-3';
 import { IonicApp, IonicErrorHandler, IonicModule } from "ionic-angular";
 import { Camera } from '@ionic-native/camera';
+// import { File } from "@ionic-native/file";
+// import { FileOpener } from "@ionic-native/file-opener";
+import { Geolocation } from '@ionic-native/geolocation';
 
 // PROVIDERS
 import { DataserviceProvider } from '../providers/dataservice/dataservice';
@@ -33,6 +36,10 @@ import { InspectPage } from "../pages/inspect/inspect";
 import { ListRequestPage } from "../pages/list-request/list-request";
 import { TabsPage } from "../pages/tabs/tabs";
 import { ProfilePage } from "../pages/profile/profile";
+import { ControlPage } from "../pages/control/control";
+import { InfoPage } from "../pages/info/info";
+
+
 
 
 
@@ -44,7 +51,9 @@ import { ProfilePage } from "../pages/profile/profile";
         InspectPage,
         TabsPage,
         ProfilePage,
-        ListRequestPage
+        ListRequestPage,
+        ControlPage,
+        InfoPage
         
     ],
     imports: [
@@ -64,10 +73,7 @@ import { ProfilePage } from "../pages/profile/profile";
         TextMaskModule,
         HttpModule,
         IonicStorageModule.forRoot(),
-        BrMaskerModule,
-        
-        
-        
+        BrMaskerModule
     ],
     
     exports: [TextMaskModule],
@@ -79,7 +85,9 @@ import { ProfilePage } from "../pages/profile/profile";
         InspectPage,
         TabsPage,
         ProfilePage,
-        ListRequestPage
+        ListRequestPage,
+        ControlPage,
+        InfoPage
         
     ],
     providers: [
@@ -95,8 +103,12 @@ import { ProfilePage } from "../pages/profile/profile";
         Clipboard,
         DataserviceProvider,
         EtuforProvider,
-        Camera
-    ]
+        Camera,
+        Geolocation,
+        // File,
+        // FileOpener
+    ],
+    schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule {
 }
