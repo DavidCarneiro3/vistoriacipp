@@ -10,11 +10,7 @@ page-control {
         text-align: center;
     }
 
-    .toolbar-md-primary .bar-button-clear-md, .toolbar-md-primary .bar-button-default-md, .toolbar-md-primary .bar-button-outline-md, .toolbar-md-primary .toolbar-title-md  {
-        color: #fff;
-      }
-    
-      .toolbar-ios-primary .toolbar-title-ios, .toolbar-ios-primary .bar-button-clear-ios, .toolbar-ios-primary .bar-button-default-ios {
-        color: #fff;
-      }
+    .back-button {
+        color: #000 !important;
+    }
 }
