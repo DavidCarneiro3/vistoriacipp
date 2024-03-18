@@ -159,15 +159,20 @@ export class HomePage {
     .subscribe((data: any) => {
       console.log('Resposta Laudo',data);
       if(data.RESULT == "ERROR"){
-        this.navCtrl.push(InfoPage,{cod: cod})
-      }else{
         this.navCtrl.push(InspectPage,{cod: cod})
+      }
+      if(data.RESULT == "INFO"){
+        this.navCtrl.push(InfoPage,{cod: cod})
+      }
+      if(data.RESULT != "ERROR" && data.RESULT != "INFO"){
+        this.navCtrl.push(ControlPage,{cod: cod})
       }
     }, err => {
       console.log("Erro Resposta Laudo", err);
       this.navCtrl.push(ControlPage,{cod: cod})
     })
   }
+
 
   clear(){
     this.request.dt_fin = '';

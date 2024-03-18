@@ -8,54 +8,54 @@
   },
   "installed_plugins": {
     "cordova-clipboard": {
-      "PACKAGE_NAME": "br.com.cipetranvistorias"
+      "PACKAGE_NAME": "br.com.necavavistorias"
     },
     "cordova-plugin-advanced-http": {
-      "PACKAGE_NAME": "br.com.cipetranvistorias"
+      "PACKAGE_NAME": "br.com.necavavistorias"
     },
     "cordova-plugin-android-permissions": {
-      "PACKAGE_NAME": "br.com.cipetranvistorias"
+      "PACKAGE_NAME": "br.com.necavavistorias"
     },
     "cordova-plugin-camera": {
       "ANDROID_SUPPORT_V4_VERSION": "27.+",
-      "PACKAGE_NAME": "br.com.cipetranvistorias"
+      "PACKAGE_NAME": "br.com.necavavistorias"
     },
     "cordova-plugin-device": {
-      "PACKAGE_NAME": "br.com.cipetranvistorias"
+      "PACKAGE_NAME": "br.com.necavavistorias"
     },
     "cordova-plugin-file-opener2": {
       "ANDROID_SUPPORT_V4_VERSION": "27.+",
-      "PACKAGE_NAME": "br.com.cipetranvistorias"
+      "PACKAGE_NAME": "br.com.necavavistorias"
     },
     "cordova-plugin-geolocation": {
       "GPS_REQUIRED": "true",
-      "PACKAGE_NAME": "br.com.cipetranvistorias"
+      "PACKAGE_NAME": "br.com.necavavistorias"
     },
     "cordova-plugin-ionic-keyboard": {
-      "PACKAGE_NAME": "br.com.cipetranvistorias"
+      "PACKAGE_NAME": "br.com.necavavistorias"
     },
     "cordova-plugin-ionic-webview": {
-      "PACKAGE_NAME": "br.com.cipetranvistorias"
+      "PACKAGE_NAME": "br.com.necavavistorias"
     },
     "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "br.com.cipetranvistorias"
+      "PACKAGE_NAME": "br.com.necavavistorias"
     },
     "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "br.com.cipetranvistorias"
+      "PACKAGE_NAME": "br.com.necavavistorias"
     },
     "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "br.com.cipetranvistorias"
+      "PACKAGE_NAME": "br.com.necavavistorias"
     },
     "cordova-sqlite-storage": {
-      "PACKAGE_NAME": "br.com.cipetranvistorias"
+      "PACKAGE_NAME": "br.com.necavavistorias"
     }
   },
   "dependent_plugins": {
     "cordova-plugin-file": {
-      "PACKAGE_NAME": "br.com.cipetranvistorias"
+      "PACKAGE_NAME": "br.com.necavavistorias"
     },
     "phonegap-plugin-multidex": {
-      "PACKAGE_NAME": "br.com.cipetranvistorias"
+      "PACKAGE_NAME": "br.com.necavavistorias"
     }
   }
 }

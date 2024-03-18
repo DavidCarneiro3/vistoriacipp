@@ -7,8 +7,9 @@ Construção e gestão do desenvolvimento do aplicativo de estacionamento zona a
 
 ## Conta do GMail
 ```
-** email **:  parkfor.desenv@gmail.com
-**senha**: Nec4va#2018@3p4
+** email **:  necavainspecoes@gmail.com
+**senha**: Necava@123
+** ID Conta **: 8735015899736163459
 ```
 ---
 
